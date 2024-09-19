@@ -8,6 +8,7 @@ builder.Services.AddDbContexts(builder.Configuration);
 // Diðer parçalar
 builder.Services.AddRepositoryServices();
 builder.Services.AddAboutCQRSHandlers();
+builder.Services.AddBannerCQRSHandlers();
 
 
 // Add services to the container.

@@ -1,4 +1,5 @@
 ﻿using CarBook.Application.Features.CQRS.Handlers.AboutHandlers;
+using CarBook.Application.Features.CQRS.Handlers.BannerHandlers;
 using CarBook.Application.Interfaces;
 using CarBook.Persistence.Context;
 using CarBook.Persistence.Repositories;
@@ -32,6 +33,17 @@ namespace CarBook.WebApi.Extensions
             services.AddScoped<CreateAboutCommandHandler>();
             services.AddScoped<UpdateAboutCommandHandler>();
             services.AddScoped<RemoveAboutCommandHandler>();
+
+            return services;
+        }
+
+        public static IServiceCollection AddBannerCQRSHandlers(this IServiceCollection services)
+        {
+            services.AddScoped<GetBannerQueryHandler>();
+            services.AddScoped<GetBannerByIdQueryHandler>();
+            services.AddScoped<CreateBannerCommandHandler>();
+            services.AddScoped<UpdateBannerCommandHandler>();
+            services.AddScoped<RemoveBannerCommandHandler>();
 
             return services;
         }

@@ -9,7 +9,7 @@ builder.Services.AddDbContexts(builder.Configuration);
 builder.Services.AddRepositoryServices();
 builder.Services.AddAboutCQRSHandlers();
 builder.Services.AddBannerCQRSHandlers();
-
+builder.Services.AddBrandCQRSHandlers();
 
 // Add services to the container.
 

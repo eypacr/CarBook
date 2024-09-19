@@ -10,6 +10,8 @@ builder.Services.AddRepositoryServices();
 builder.Services.AddAboutCQRSHandlers();
 builder.Services.AddBannerCQRSHandlers();
 builder.Services.AddBrandCQRSHandlers();
+builder.Services.AddCarCQRSHandlers();
+
 
 // Add services to the container.
 

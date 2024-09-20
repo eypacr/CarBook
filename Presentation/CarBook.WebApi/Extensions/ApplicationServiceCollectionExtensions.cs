@@ -3,8 +3,10 @@ using CarBook.Application.Features.CQRS.Handlers.BannerHandlers;
 using CarBook.Application.Features.CQRS.Handlers.BrandHandlers;
 using CarBook.Application.Features.CQRS.Handlers.CarHandlers;
 using CarBook.Application.Interfaces;
+using CarBook.Application.Interfaces.CarInterfaces;
 using CarBook.Persistence.Context;
 using CarBook.Persistence.Repositories;
+using CarBook.Persistence.Repositories.CarRepositories;
 
 namespace CarBook.WebApi.Extensions
 {
@@ -24,6 +26,7 @@ namespace CarBook.WebApi.Extensions
         {
             services.AddScoped<CarBookContext>();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped(typeof(ICarRepository), typeof(CarRepository));
 
             return services;
         }
@@ -68,6 +71,7 @@ namespace CarBook.WebApi.Extensions
             services.AddScoped<CreateCarCommandHandler>();
             services.AddScoped<UpdateCarCommandHandler>();
             services.AddScoped<RemoveCarCommandHandler>();
+            services.AddScoped<GetCarWithBrandQueryHandler>();
 
             return services;
         }

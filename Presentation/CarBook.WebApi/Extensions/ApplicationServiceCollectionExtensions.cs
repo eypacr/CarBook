@@ -3,6 +3,7 @@ using CarBook.Application.Features.CQRS.Handlers.BannerHandlers;
 using CarBook.Application.Features.CQRS.Handlers.BrandHandlers;
 using CarBook.Application.Features.CQRS.Handlers.CarHandlers;
 using CarBook.Application.Features.CQRS.Handlers.CategoryHandlers;
+using CarBook.Application.Features.CQRS.Handlers.ContactHandlers;
 using CarBook.Application.Interfaces;
 using CarBook.Application.Interfaces.CarInterfaces;
 using CarBook.Persistence.Context;
@@ -84,6 +85,17 @@ namespace CarBook.WebApi.Extensions
             services.AddScoped<CreateCategoryCommandHandler>();
             services.AddScoped<UpdateCategoryCommandHandler>();
             services.AddScoped<RemoveCategoryCommandHandler>();
+
+            return services;
+        }
+
+        public static IServiceCollection AddContactCQRSHandlers(this IServiceCollection services)
+        {
+            services.AddScoped<GetContactQueryHandler>();
+            services.AddScoped<GetContactByIdQueryHandler>();
+            services.AddScoped<CreateContactCommandHandler>();
+            services.AddScoped<UpdateContactCommandHandler>();
+            services.AddScoped<RemoveContactCommandHandler>();
 
             return services;
         }

@@ -12,6 +12,7 @@ builder.Services.AddBannerCQRSHandlers();
 builder.Services.AddBrandCQRSHandlers();
 builder.Services.AddCarCQRSHandlers();
 builder.Services.AddCategoryCQRSHandlers();
+builder.Services.AddContactCQRSHandlers();
 
 
 // Add services to the container.

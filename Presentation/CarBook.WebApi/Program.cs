@@ -1,3 +1,4 @@
+using CarBook.Application.Services;
 using CarBook.WebApi.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +15,8 @@ builder.Services.AddCarCQRSHandlers();
 builder.Services.AddCategoryCQRSHandlers();
 builder.Services.AddContactCQRSHandlers();
 
+//Mediator
+builder.Services.AddApplicationService(builder.Configuration);
 
 // Add services to the container.
 

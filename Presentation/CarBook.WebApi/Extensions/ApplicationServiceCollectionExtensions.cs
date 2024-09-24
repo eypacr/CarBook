@@ -74,6 +74,7 @@ namespace CarBook.WebApi.Extensions
             services.AddScoped<UpdateCarCommandHandler>();
             services.AddScoped<RemoveCarCommandHandler>();
             services.AddScoped<GetCarWithBrandQueryHandler>();
+            services.AddScoped<GetLast5CarsWithBrandQueryHandler>();
 
             return services;
         }

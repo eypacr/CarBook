@@ -23,9 +23,12 @@ public static class RepositoryExtensions
             dbContext.Database.Migrate();
         }
         services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-        services.AddScoped(typeof(ICarRepository), typeof(CarRepository));
-        services.AddScoped(typeof(IBlogRepository), typeof(BlogRepository));
-        services.AddScoped(typeof(ICarPricingRepository), typeof(CarPricingRepository));
+        services.AddScoped<ICarRepository, CarRepository>();
+        services.AddScoped<IBlogRepository, BlogRepository>();
+        services.AddScoped<ICarPricingRepository, CarPricingRepository>();
+        services.AddScoped<ICarPricingRepository, CarPricingRepository>();
+        services.AddScoped<ICategoryRepository, CategoryRepository>();
+        services.AddScoped<ITagCloudRepository, TagCloudRepository>();
 
         return services;
     }

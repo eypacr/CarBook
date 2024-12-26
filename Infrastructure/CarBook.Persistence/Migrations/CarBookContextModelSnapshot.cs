@@ -45,6 +45,15 @@ namespace CarBook.Persistence.Migrations
                     b.HasKey("AboutId");
 
                     b.ToTable("Abouts");
+
+                    b.HasData(
+                        new
+                        {
+                            AboutId = 1,
+                            Description = "CarBook, araç kiralama sektöründe en iyi hizmeti sunmak için kendini sürekli geliştiren bir platformdur. Modern teknoloji ile hızlı ve kolay araç kiralama imkanı sunarken, geniş araç yelpazesiyle her ihtiyaca uygun seçenekler sağlar. Müşteri memnuniyetini ön planda tutarak, güvenli ve pratik bir kiralama deneyimi sunuyoruz.",
+                            ImageUrl = "/carbook-master/images/bg_3.jpg",
+                            Title = "CarBook'a Hoş Geldiniz! Yola Çıkmaya Hazır Mısınız ?"
+                        });
                 });
 
             modelBuilder.Entity("CarBook.Domain.Entities.Author", b =>
@@ -70,6 +79,36 @@ namespace CarBook.Persistence.Migrations
                     b.HasKey("AuthorId");
 
                     b.ToTable("Authors");
+
+                    b.HasData(
+                        new
+                        {
+                            AuthorId = 1,
+                            Description = "Deneyimli bir otomobil meraklısı ve blog yazarı.",
+                            ImageUrl = "/carbook-master/images/Person_3.jpg",
+                            Name = "Ahmet Yılmaz"
+                        },
+                        new
+                        {
+                            AuthorId = 2,
+                            Description = "Otomobil endüstrisinde uzmanlaşmış bir mühendis.",
+                            ImageUrl = "/carbook-master/images/Person_2.jpg",
+                            Name = "Mehmet Ak"
+                        },
+                        new
+                        {
+                            AuthorId = 3,
+                            Description = "Araç incelemeleri ve test sürüşleri konusunda uzman.",
+                            ImageUrl = "/carbook-master/images/Person_1.jpg",
+                            Name = "Mustafa Çelik"
+                        },
+                        new
+                        {
+                            AuthorId = 4,
+                            Description = "Otomobil teknolojileri ve yenilikler konusunda bilgili bir gazeteci.",
+                            ImageUrl = "/carbook-master/images/Person_2.jpg",
+                            Name = "Ali Vural"
+                        });
                 });
 
             modelBuilder.Entity("CarBook.Domain.Entities.Banner", b =>
@@ -99,6 +138,16 @@ namespace CarBook.Persistence.Migrations
                     b.HasKey("BannerId");
 
                     b.ToTable("Banners");
+
+                    b.HasData(
+                        new
+                        {
+                            BannerId = 1,
+                            Description = "CarBook ile 7/24 kolay ve hızlı araç kiralama! Geniş araç seçenekleri, uygun fiyatlar ve kesintisiz hizmetle dilediğiniz zaman aracınızı kiralayın.",
+                            Title = "Kolay Ve Hızlı Araç Kiralayın",
+                            VideoDescription = "Tanıtım Videosu",
+                            VideoUrl = "https://www.youtube.com/watch?v=ZlaVqOI3cCQ"
+                        });
                 });
 
             modelBuilder.Entity("CarBook.Domain.Entities.Blog", b =>
@@ -122,6 +171,10 @@ namespace CarBook.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -133,6 +186,48 @@ namespace CarBook.Persistence.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Blogs");
+
+                    b.HasData(
+                        new
+                        {
+                            BlogId = 1,
+                            AuthorID = 1,
+                            CategoryId = 4,
+                            CoverImageUrl = "/carbook-master/images/bg_3.jpg",
+                            CreatedDate = new DateTime(2023, 6, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Elektrikli araçların geleceği ve çevre üzerindeki etkileri hakkında bilgi veren bir yazı.",
+                            Title = "Elektrikli Araçların Geleceği"
+                        },
+                        new
+                        {
+                            BlogId = 2,
+                            AuthorID = 2,
+                            CategoryId = 2,
+                            CoverImageUrl = "/carbook-master/images/image_1.jpg",
+                            CreatedDate = new DateTime(2023, 7, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "SUV araçlarının sağladığı avantajlar ve neden tercih edildikleri üzerine bir yazı.",
+                            Title = "SUV Modellerinin Avantajları"
+                        },
+                        new
+                        {
+                            BlogId = 3,
+                            AuthorID = 3,
+                            CategoryId = 1,
+                            CoverImageUrl = "/carbook-master/images/image_2.jpg",
+                            CreatedDate = new DateTime(2023, 8, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Sedan araba modellerinin konfor ve performans açısından sundukları özellikler.",
+                            Title = "Sedan Arabalar: Konfor ve Performans"
+                        },
+                        new
+                        {
+                            BlogId = 4,
+                            AuthorID = 4,
+                            CategoryId = 3,
+                            CoverImageUrl = "/carbook-master/images/image_3.jpg",
+                            CreatedDate = new DateTime(2023, 9, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Kamyonların güçlü motor yapıları ve dayanıklılıkları üzerine detaylı bir yazı.",
+                            Title = "Kamyonların Dayanıklılığı ve Gücü"
+                        });
                 });
 
             modelBuilder.Entity("CarBook.Domain.Entities.Brand", b =>
@@ -150,6 +245,48 @@ namespace CarBook.Persistence.Migrations
                     b.HasKey("BrandId");
 
                     b.ToTable("Brands");
+
+                    b.HasData(
+                        new
+                        {
+                            BrandId = 1,
+                            Name = "Mercedes"
+                        },
+                        new
+                        {
+                            BrandId = 2,
+                            Name = "Range Rover"
+                        },
+                        new
+                        {
+                            BrandId = 3,
+                            Name = "BMW"
+                        },
+                        new
+                        {
+                            BrandId = 4,
+                            Name = "Audi"
+                        },
+                        new
+                        {
+                            BrandId = 5,
+                            Name = "Renault"
+                        },
+                        new
+                        {
+                            BrandId = 6,
+                            Name = "Volkswogen"
+                        },
+                        new
+                        {
+                            BrandId = 7,
+                            Name = "Toyota"
+                        },
+                        new
+                        {
+                            BrandId = 8,
+                            Name = "Jeep"
+                        });
                 });
 
             modelBuilder.Entity("CarBook.Domain.Entities.Car", b =>
@@ -197,6 +334,164 @@ namespace CarBook.Persistence.Migrations
                     b.HasIndex("BrandId");
 
                     b.ToTable("Cars");
+
+                    b.HasData(
+                        new
+                        {
+                            CarId = 1,
+                            BigImageUrl = "/carbook-master/images/car-1.jpg",
+                            BrandId = 1,
+                            CoverImageUrl = "/carbook-master/images/car-1.jpg",
+                            Fuel = "Benzin",
+                            Km = 0,
+                            Luggage = (byte)2,
+                            Model = "E-200",
+                            Seat = (byte)5,
+                            Transmission = "Otomatik"
+                        },
+                        new
+                        {
+                            CarId = 2,
+                            BigImageUrl = "/carbook-master/images/car-2.jpg",
+                            BrandId = 2,
+                            CoverImageUrl = "/carbook-master/images/car-2.jpg",
+                            Fuel = "Dizel",
+                            Km = 0,
+                            Luggage = (byte)2,
+                            Model = "Velar",
+                            Seat = (byte)5,
+                            Transmission = "Otomatik"
+                        },
+                        new
+                        {
+                            CarId = 3,
+                            BigImageUrl = "/carbook-master/images/car-5.jpg",
+                            BrandId = 3,
+                            CoverImageUrl = "/carbook-master/images/car-5.jpg",
+                            Fuel = "Benzin",
+                            Km = 0,
+                            Luggage = (byte)2,
+                            Model = "BMW Serisi",
+                            Seat = (byte)5,
+                            Transmission = "Otomatik"
+                        },
+                        new
+                        {
+                            CarId = 4,
+                            BigImageUrl = "/carbook-master/images/car-12.jpg",
+                            BrandId = 4,
+                            CoverImageUrl = "/carbook-master/images/car-12.jpg",
+                            Fuel = "Benzin",
+                            Km = 0,
+                            Luggage = (byte)2,
+                            Model = "A3",
+                            Seat = (byte)5,
+                            Transmission = "Manuel"
+                        },
+                        new
+                        {
+                            CarId = 5,
+                            BigImageUrl = "/carbook-master/images/car-4.jpg",
+                            BrandId = 5,
+                            CoverImageUrl = "/carbook-master/images/car-4.jpg",
+                            Fuel = "Benzin",
+                            Km = 0,
+                            Luggage = (byte)2,
+                            Model = "Clio",
+                            Seat = (byte)5,
+                            Transmission = "Manuel"
+                        },
+                        new
+                        {
+                            CarId = 6,
+                            BigImageUrl = "/carbook-master/images/car-3.jpg",
+                            BrandId = 6,
+                            CoverImageUrl = "/carbook-master/images/car-3.jpg",
+                            Fuel = "Dizel",
+                            Km = 0,
+                            Luggage = (byte)2,
+                            Model = "Passat",
+                            Seat = (byte)5,
+                            Transmission = "Otomatik"
+                        },
+                        new
+                        {
+                            CarId = 7,
+                            BigImageUrl = "/carbook-master/images/car-6.jpg",
+                            BrandId = 7,
+                            CoverImageUrl = "/carbook-master/images/car-6.jpg",
+                            Fuel = "Dizel",
+                            Km = 0,
+                            Luggage = (byte)2,
+                            Model = "Corolla",
+                            Seat = (byte)5,
+                            Transmission = "Manuel"
+                        },
+                        new
+                        {
+                            CarId = 8,
+                            BigImageUrl = "/carbook-master/images/car-8.jpg",
+                            BrandId = 8,
+                            CoverImageUrl = "/carbook-master/images/car-8.jpg",
+                            Fuel = "Benzin",
+                            Km = 0,
+                            Luggage = (byte)2,
+                            Model = "Cherokee",
+                            Seat = (byte)5,
+                            Transmission = "Manuel"
+                        },
+                        new
+                        {
+                            CarId = 9,
+                            BigImageUrl = "/carbook-master/images/car-7.jpg",
+                            BrandId = 1,
+                            CoverImageUrl = "/carbook-master/images/car-7.jpg",
+                            Fuel = "Benzin",
+                            Km = 0,
+                            Luggage = (byte)2,
+                            Model = " S 350 BlueTEC 4Matic ",
+                            Seat = (byte)5,
+                            Transmission = "Manuel"
+                        },
+                        new
+                        {
+                            CarId = 10,
+                            BigImageUrl = "/carbook-master/images/car-9.jpg",
+                            BrandId = 1,
+                            CoverImageUrl = "/carbook-master/images/car-9.jpg",
+                            Fuel = "Dizel",
+                            Km = 0,
+                            Luggage = (byte)2,
+                            Model = "S 320 CDI ",
+                            Seat = (byte)5,
+                            Transmission = "Otomatik"
+                        },
+                        new
+                        {
+                            CarId = 11,
+                            BigImageUrl = "/carbook-master/images/car-10.jpg",
+                            BrandId = 1,
+                            CoverImageUrl = "/carbook-master/images/car-10.jpg",
+                            Fuel = "Dizel",
+                            Km = 0,
+                            Luggage = (byte)2,
+                            Model = "S 400 400",
+                            Seat = (byte)5,
+                            Transmission = "Otomatik"
+                        },
+                        new
+                        {
+                            CarId = 12,
+                            BigImageUrl = "/carbook-master/images/car-11.jpg",
+                            BrandId = 1,
+                            CoverImageUrl = "/carbook-master/images/car-11.jpg",
+                            Fuel = "Benzin",
+                            Km = 0,
+                            Luggage = (byte)2,
+                            Model = "S 500 500 L",
+                            Seat = (byte)5,
+                            Transmission = "Otomatik"
+                        });
                 });
 
             modelBuilder.Entity("CarBook.Domain.Entities.CarDescription", b =>
@@ -219,6 +514,56 @@ namespace CarBook.Persistence.Migrations
                     b.HasIndex("CarId");
 
                     b.ToTable("CarDescriptions");
+
+                    b.HasData(
+                        new
+                        {
+                            CarDescriptionId = 1,
+                            CarId = 1,
+                            Details = "Mercedes E-200, şık ve güçlü bir sedan modelidir. Benzinli motoru, yüksek konforu ve zarif tasarımı ile öne çıkar."
+                        },
+                        new
+                        {
+                            CarDescriptionId = 2,
+                            CarId = 2,
+                            Details = "Range Rover Velar, lüks SUV sınıfında yer alır. Şık tasarımı, güçlü motoru ve 4x4 özellikleriyle dikkat çeker."
+                        },
+                        new
+                        {
+                            CarDescriptionId = 3,
+                            CarId = 3,
+                            Details = "BMW Serisi, dinamik sürüş deneyimi sunar. Modern tasarımı ve premium özellikleriyle uzun yolculuklarda konfor sağlar."
+                        },
+                        new
+                        {
+                            CarDescriptionId = 4,
+                            CarId = 4,
+                            Details = "Audi A3, kompakt sınıfta lüks bir seçenektir. Güçlü motorları ve şık tasarımı ile şehir içi kullanım için ideal."
+                        },
+                        new
+                        {
+                            CarDescriptionId = 5,
+                            CarId = 5,
+                            Details = "Renault Clio, ekonomik bir hatchback modelidir. Kompakt yapısı, pratikliği ve düşük yakıt tüketimi ile şehir içi kullanımda tercih edilir."
+                        },
+                        new
+                        {
+                            CarDescriptionId = 6,
+                            CarId = 6,
+                            Details = "Volkswogen Passat, orta sınıf sedan bir araçtır. Geniş iç hacmi ve sağlam yapısıyla uzun yolculuklar için idealdir."
+                        },
+                        new
+                        {
+                            CarDescriptionId = 7,
+                            CarId = 7,
+                            Details = "Toyota Corolla, güvenli ve dayanıklı bir sedan modelidir. Düşük bakım maliyetleri ve ekonomik yakıt tüketimi ile öne çıkar."
+                        },
+                        new
+                        {
+                            CarDescriptionId = 8,
+                            CarId = 8,
+                            Details = "Jeep Cherokee, arazi yetenekleri ile öne çıkan bir SUV'dur. Hem şehir içinde hem de zorlu yol koşullarında güçlü performans sergiler."
+                        });
                 });
 
             modelBuilder.Entity("CarBook.Domain.Entities.CarFeature", b =>
@@ -245,6 +590,204 @@ namespace CarBook.Persistence.Migrations
                     b.HasIndex("FeatureId");
 
                     b.ToTable("CarFeatures");
+
+                    b.HasData(
+                        new
+                        {
+                            CarFeatureId = 1,
+                            Available = true,
+                            CarId = 1,
+                            FeatureId = 1
+                        },
+                        new
+                        {
+                            CarFeatureId = 2,
+                            Available = true,
+                            CarId = 1,
+                            FeatureId = 2
+                        },
+                        new
+                        {
+                            CarFeatureId = 3,
+                            Available = true,
+                            CarId = 1,
+                            FeatureId = 3
+                        },
+                        new
+                        {
+                            CarFeatureId = 4,
+                            Available = false,
+                            CarId = 1,
+                            FeatureId = 4
+                        },
+                        new
+                        {
+                            CarFeatureId = 5,
+                            Available = true,
+                            CarId = 2,
+                            FeatureId = 1
+                        },
+                        new
+                        {
+                            CarFeatureId = 6,
+                            Available = true,
+                            CarId = 2,
+                            FeatureId = 2
+                        },
+                        new
+                        {
+                            CarFeatureId = 7,
+                            Available = true,
+                            CarId = 2,
+                            FeatureId = 5
+                        },
+                        new
+                        {
+                            CarFeatureId = 8,
+                            Available = true,
+                            CarId = 3,
+                            FeatureId = 1
+                        },
+                        new
+                        {
+                            CarFeatureId = 9,
+                            Available = true,
+                            CarId = 3,
+                            FeatureId = 6
+                        },
+                        new
+                        {
+                            CarFeatureId = 10,
+                            Available = true,
+                            CarId = 4,
+                            FeatureId = 1
+                        },
+                        new
+                        {
+                            CarFeatureId = 11,
+                            Available = true,
+                            CarId = 4,
+                            FeatureId = 3
+                        },
+                        new
+                        {
+                            CarFeatureId = 12,
+                            Available = false,
+                            CarId = 4,
+                            FeatureId = 8
+                        },
+                        new
+                        {
+                            CarFeatureId = 13,
+                            Available = true,
+                            CarId = 5,
+                            FeatureId = 1
+                        },
+                        new
+                        {
+                            CarFeatureId = 14,
+                            Available = true,
+                            CarId = 5,
+                            FeatureId = 2
+                        },
+                        new
+                        {
+                            CarFeatureId = 15,
+                            Available = true,
+                            CarId = 6,
+                            FeatureId = 1
+                        },
+                        new
+                        {
+                            CarFeatureId = 16,
+                            Available = true,
+                            CarId = 6,
+                            FeatureId = 3
+                        },
+                        new
+                        {
+                            CarFeatureId = 17,
+                            Available = true,
+                            CarId = 7,
+                            FeatureId = 1
+                        },
+                        new
+                        {
+                            CarFeatureId = 18,
+                            Available = false,
+                            CarId = 7,
+                            FeatureId = 4
+                        },
+                        new
+                        {
+                            CarFeatureId = 19,
+                            Available = true,
+                            CarId = 8,
+                            FeatureId = 1
+                        },
+                        new
+                        {
+                            CarFeatureId = 20,
+                            Available = true,
+                            CarId = 8,
+                            FeatureId = 5
+                        },
+                        new
+                        {
+                            CarFeatureId = 21,
+                            Available = true,
+                            CarId = 9,
+                            FeatureId = 1
+                        },
+                        new
+                        {
+                            CarFeatureId = 22,
+                            Available = true,
+                            CarId = 9,
+                            FeatureId = 6
+                        },
+                        new
+                        {
+                            CarFeatureId = 23,
+                            Available = true,
+                            CarId = 10,
+                            FeatureId = 1
+                        },
+                        new
+                        {
+                            CarFeatureId = 24,
+                            Available = true,
+                            CarId = 10,
+                            FeatureId = 3
+                        },
+                        new
+                        {
+                            CarFeatureId = 25,
+                            Available = true,
+                            CarId = 11,
+                            FeatureId = 1
+                        },
+                        new
+                        {
+                            CarFeatureId = 26,
+                            Available = true,
+                            CarId = 11,
+                            FeatureId = 4
+                        },
+                        new
+                        {
+                            CarFeatureId = 27,
+                            Available = true,
+                            CarId = 12,
+                            FeatureId = 1
+                        },
+                        new
+                        {
+                            CarFeatureId = 28,
+                            Available = true,
+                            CarId = 12,
+                            FeatureId = 8
+                        });
                 });
 
             modelBuilder.Entity("CarBook.Domain.Entities.CarPricing", b =>
@@ -271,6 +814,92 @@ namespace CarBook.Persistence.Migrations
                     b.HasIndex("PricingId");
 
                     b.ToTable("CarPricings");
+
+                    b.HasData(
+                        new
+                        {
+                            CarPricingId = 1,
+                            Amount = 900m,
+                            CarId = 1,
+                            PricingId = 2
+                        },
+                        new
+                        {
+                            CarPricingId = 2,
+                            Amount = 950m,
+                            CarId = 2,
+                            PricingId = 2
+                        },
+                        new
+                        {
+                            CarPricingId = 3,
+                            Amount = 1000m,
+                            CarId = 3,
+                            PricingId = 2
+                        },
+                        new
+                        {
+                            CarPricingId = 4,
+                            Amount = 1050m,
+                            CarId = 4,
+                            PricingId = 2
+                        },
+                        new
+                        {
+                            CarPricingId = 5,
+                            Amount = 1100m,
+                            CarId = 5,
+                            PricingId = 2
+                        },
+                        new
+                        {
+                            CarPricingId = 6,
+                            Amount = 1150m,
+                            CarId = 6,
+                            PricingId = 2
+                        },
+                        new
+                        {
+                            CarPricingId = 7,
+                            Amount = 1200m,
+                            CarId = 7,
+                            PricingId = 2
+                        },
+                        new
+                        {
+                            CarPricingId = 8,
+                            Amount = 1250m,
+                            CarId = 8,
+                            PricingId = 2
+                        },
+                        new
+                        {
+                            CarPricingId = 9,
+                            Amount = 1300m,
+                            CarId = 9,
+                            PricingId = 2
+                        },
+                        new
+                        {
+                            CarPricingId = 10,
+                            Amount = 1350m,
+                            CarId = 10,
+                            PricingId = 2
+                        },
+                        new
+                        {
+                            CarPricingId = 11,
+                            Amount = 1400m,
+                            CarId = 11,
+                            PricingId = 2
+                        },
+                        new
+                        {
+                            CarPricingId = 12,
+                            Amount = 1450m,
+                            CarId = 12,
+                            PricingId = 2
+                        });
                 });
 
             modelBuilder.Entity("CarBook.Domain.Entities.Category", b =>
@@ -288,6 +917,33 @@ namespace CarBook.Persistence.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryId = 1,
+                            Name = "Hibrit Araçlar"
+                        },
+                        new
+                        {
+                            CategoryId = 2,
+                            Name = "Araç Bakımları"
+                        },
+                        new
+                        {
+                            CategoryId = 3,
+                            Name = "Periyodik Muayeneler"
+                        },
+                        new
+                        {
+                            CategoryId = 4,
+                            Name = "Elektrikli Araçlar"
+                        },
+                        new
+                        {
+                            CategoryId = 5,
+                            Name = "Araç Temizliği"
+                        });
                 });
 
             modelBuilder.Entity("CarBook.Domain.Entities.Contact", b =>
@@ -337,6 +993,48 @@ namespace CarBook.Persistence.Migrations
                     b.HasKey("FeatureId");
 
                     b.ToTable("Features");
+
+                    b.HasData(
+                        new
+                        {
+                            FeatureId = 1,
+                            Name = "Klima"
+                        },
+                        new
+                        {
+                            FeatureId = 2,
+                            Name = "GPS Navigasyon"
+                        },
+                        new
+                        {
+                            FeatureId = 3,
+                            Name = "Bluetooth Bağlantısı"
+                        },
+                        new
+                        {
+                            FeatureId = 4,
+                            Name = "Isıtmalı Koltuklar"
+                        },
+                        new
+                        {
+                            FeatureId = 5,
+                            Name = "Sunroof"
+                        },
+                        new
+                        {
+                            FeatureId = 6,
+                            Name = "Geri Görüş Kamerası"
+                        },
+                        new
+                        {
+                            FeatureId = 7,
+                            Name = "Hız Sabitleyici"
+                        },
+                        new
+                        {
+                            FeatureId = 8,
+                            Name = "Park Sensörleri"
+                        });
                 });
 
             modelBuilder.Entity("CarBook.Domain.Entities.FooterAddress", b =>
@@ -400,6 +1098,28 @@ namespace CarBook.Persistence.Migrations
                     b.HasKey("PricingId");
 
                     b.ToTable("Pricings");
+
+                    b.HasData(
+                        new
+                        {
+                            PricingId = 1,
+                            Name = "Saatlik"
+                        },
+                        new
+                        {
+                            PricingId = 2,
+                            Name = "Günlük"
+                        },
+                        new
+                        {
+                            PricingId = 3,
+                            Name = "Haftalık"
+                        },
+                        new
+                        {
+                            PricingId = 4,
+                            Name = "Aylık"
+                        });
                 });
 
             modelBuilder.Entity("CarBook.Domain.Entities.Service", b =>
@@ -425,6 +1145,36 @@ namespace CarBook.Persistence.Migrations
                     b.HasKey("ServiceId");
 
                     b.ToTable("Services");
+
+                    b.HasData(
+                        new
+                        {
+                            ServiceId = 1,
+                            Description = "Düğün gününüzü unutulmaz kılmak için profesyonel ve kapsamlı düğün organizasyonu hizmetleri sunuyoruz.",
+                            IconUrl = "flaticon-wedding-car",
+                            Title = "Düğün Organizasyonu"
+                        },
+                        new
+                        {
+                            ServiceId = 2,
+                            Description = "Şehir turlarınızın unutulmaz olması için profesyonel ve kapsamlı hizmetler sunuyoruz.",
+                            IconUrl = "flaticon-transportation",
+                            Title = "Şehir Turları"
+                        },
+                        new
+                        {
+                            ServiceId = 3,
+                            Description = "VIP servislerimiz ile özel anlarınızı unutulmaz kılmak için profesyonel ve kapsamlı hizmetler sunuyoruz.",
+                            IconUrl = "flaticon-car",
+                            Title = "VIP Servis"
+                        },
+                        new
+                        {
+                            ServiceId = 4,
+                            Description = "Havalimanı aktarmalarınız için profesyonel ve güvenilir VIP servisler sunuyoruz.",
+                            IconUrl = "flaticon-rent",
+                            Title = "Havalimanı Aktarmaları"
+                        });
                 });
 
             modelBuilder.Entity("CarBook.Domain.Entities.SocialMedia", b =>
@@ -450,6 +1200,28 @@ namespace CarBook.Persistence.Migrations
                     b.HasKey("SocialMediaId");
 
                     b.ToTable("SocialMedias");
+                });
+
+            modelBuilder.Entity("CarBook.Domain.Entities.TagCloud", b =>
+                {
+                    b.Property<int>("TagCloudId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TagCloudId"));
+
+                    b.Property<int>("BlogId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("TagCloudId");
+
+                    b.HasIndex("BlogId");
+
+                    b.ToTable("TagClouds");
                 });
 
             modelBuilder.Entity("CarBook.Domain.Entities.Testimonial", b =>
@@ -479,6 +1251,40 @@ namespace CarBook.Persistence.Migrations
                     b.HasKey("TestimonialId");
 
                     b.ToTable("Testimonials");
+
+                    b.HasData(
+                        new
+                        {
+                            TestimonialId = 1,
+                            Comment = "Proje Yöneticisi, projelerin zamanında, bütçeye uygun ve kaliteye uygun tamamlanmasını sağlar, ekipleri yönetir ve kaynakları etkin kullanır.",
+                            ImageUrl = "/carbook-master/images/person_1.jpg",
+                            Name = "Semih Sarı",
+                            Title = "Proje Yöneticisi"
+                        },
+                        new
+                        {
+                            TestimonialId = 2,
+                            Comment = "Endüstri Mühendisi, üretim süreçlerini ve kaynakları en verimli şekilde düzenleyerek verimliliği artıran ve maliyetleri düşüren bir profesyoneldir.",
+                            ImageUrl = "/carbook-master/images/person_2.jpg",
+                            Name = "Ahmet Öztürk",
+                            Title = "Endüstri Mühendisi"
+                        },
+                        new
+                        {
+                            TestimonialId = 3,
+                            Comment = "Makine Mühendisi, mekanik sistemlerin tasarım, üretim ve bakım süreçlerini yöneterek verimliliği artıran ve teknik çözümler üreten uzmandır.",
+                            ImageUrl = "/carbook-master/images/person_3.jpg",
+                            Name = "Mehmet Ali Yıldız",
+                            Title = "Makine Mühendisi"
+                        },
+                        new
+                        {
+                            TestimonialId = 4,
+                            Comment = "Bilgisayar Mühendisi, yazılım ve donanım sistemlerini tasarlayan, geliştiren ve optimize eden, teknoloji çözümleri üreten uzmandır.",
+                            ImageUrl = "/carbook-master/images/person_4.jpg",
+                            Name = "Eyyüp Acar",
+                            Title = "Bilgisayar Mühendisi"
+                        });
                 });
 
             modelBuilder.Entity("CarBook.Domain.Entities.Blog", b =>
@@ -560,9 +1366,25 @@ namespace CarBook.Persistence.Migrations
                     b.Navigation("Pricing");
                 });
 
+            modelBuilder.Entity("CarBook.Domain.Entities.TagCloud", b =>
+                {
+                    b.HasOne("CarBook.Domain.Entities.Blog", "Blog")
+                        .WithMany("TagClouds")
+                        .HasForeignKey("BlogId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Blog");
+                });
+
             modelBuilder.Entity("CarBook.Domain.Entities.Author", b =>
                 {
                     b.Navigation("Blogs");
+                });
+
+            modelBuilder.Entity("CarBook.Domain.Entities.Blog", b =>
+                {
+                    b.Navigation("TagClouds");
                 });
 
             modelBuilder.Entity("CarBook.Domain.Entities.Brand", b =>

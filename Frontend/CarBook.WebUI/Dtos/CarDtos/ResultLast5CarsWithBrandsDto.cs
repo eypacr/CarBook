@@ -1,4 +1,6 @@
-﻿namespace CarBook.WebUI.Dtos.CarDtos;
+﻿using CarBook.WebUI.Dtos.CarPricingsDtos;
+
+namespace CarBook.WebUI.Dtos.CarDtos;
 
 public class ResultLast5CarsWithBrandsDto
 {

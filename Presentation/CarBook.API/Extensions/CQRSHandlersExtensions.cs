@@ -42,6 +42,7 @@ public static class CQRSHandlersExtensions
         services.AddScoped<CreateCategoryCommandHandler>();
         services.AddScoped<UpdateCategoryCommandHandler>();
         services.AddScoped<RemoveCategoryCommandHandler>();
+        services.AddScoped<GetCategoryWithBlogCountQueryHandler>();
 
         services.AddScoped<GetContactQueryHandler>();
         services.AddScoped<GetContactByIdQueryHandler>();

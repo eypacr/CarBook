@@ -1,4 +1,4 @@
-﻿namespace CarBook.WebUI.Dtos.TagCloudsDtos;
+﻿namespace CarBook.WebUI.Dtos.TagCloudDtos;
 
 public class GetByBlogIdTagCloudDto
 {

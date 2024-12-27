@@ -29,6 +29,7 @@ public static class RepositoryExtensions
         services.AddScoped<ICarPricingRepository, CarPricingRepository>();
         services.AddScoped<ICategoryRepository, CategoryRepository>();
         services.AddScoped<ITagCloudRepository, TagCloudRepository>();
+        services.AddScoped<ICommentRepository, CommentRepository>();
 
         return services;
     }

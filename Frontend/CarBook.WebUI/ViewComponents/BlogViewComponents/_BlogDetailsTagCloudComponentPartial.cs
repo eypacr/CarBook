@@ -1,4 +1,4 @@
-﻿using CarBook.WebUI.Dtos.TagCloudsDtos;
+﻿using CarBook.WebUI.Dtos.TagCloudDtos;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 

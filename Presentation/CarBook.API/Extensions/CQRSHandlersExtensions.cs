@@ -36,6 +36,7 @@ public static class CQRSHandlersExtensions
         services.AddScoped<RemoveCarCommandHandler>();
         services.AddScoped<GetCarWithBrandQueryHandler>();
         services.AddScoped<GetLast5CarsWithBrandQueryHandler>();
+        services.AddScoped<GetCarsByBrandQueryHandler>();
 
         services.AddScoped<GetCategoryQueryHandler>();
         services.AddScoped<GetCategoryByIdQueryHandler>();

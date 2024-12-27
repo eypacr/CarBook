@@ -1,0 +1,55 @@
+﻿@model List<ResultCarWithBrandsDto>
+@{
+    ViewData["Title"] = "DetailBrand";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Markaya Ait Araçlar Listesi</h4>
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Sayısı</th>
+                                        <th>Marka Adı</th>
+                                        <th>Model</th>
+                                        <th>Kilometre</th>
+                                        <th>Vites</th>
+                                        <th>KoltuK</th>
+                                        <th>Bagaj</th>
+                                        <th>Yakıt</th>
+                                        <th>Kapak Resmi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        count++;
+                                        <tr>
+                                            <th scope="row">@count</th>
+                                            <td>@item.BrandName</td>
+                                            <td>@item.Model</td>
+                                            <td>@item.Km</td>
+                                            <td>@item.Transmission</td>
+                                            <td>@item.Seat</td>
+                                            <td>@item.Luggage</td>
+                                            <td>@item.Fuel</td>
+                                            <td><img src="@item.CoverImageUrl" alt="Cover Image" width="75" height="75" /></td>
+                                        </tr>
+                                    }
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

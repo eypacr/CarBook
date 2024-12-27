@@ -16,10 +16,11 @@ namespace CarBook.WebApi.Controllers
         private readonly UpdateCarCommandHandler _updateCarCommandHandler;
         private readonly GetCarWithBrandQueryHandler _getCarWithBrandQueryHandler;
         private readonly GetLast5CarsWithBrandQueryHandler _getLast5CarsWithBrandQueryHandler;
+        private readonly GetCarsByBrandQueryHandler _getCarsByBrandQueryHandler;
 
         public CarsController(CreateCarCommandHandler createCarCommandHandler, GetCarByIdQueryHandler getCarByIdQueryHandler,
             GetCarQueryHandler getCarQueryHandler, RemoveCarCommandHandler removeCarCommandHandler, UpdateCarCommandHandler updateCarCommandHandler,
-            GetCarWithBrandQueryHandler getCarWithBrandQueryHandler, GetLast5CarsWithBrandQueryHandler getLast5CarsWithBrandQueryHandler)
+            GetCarWithBrandQueryHandler getCarWithBrandQueryHandler, GetLast5CarsWithBrandQueryHandler getLast5CarsWithBrandQueryHandler, GetCarsByBrandQueryHandler getCarsByBrandQueryHandler)
         {
             _createCarCommandHandler = createCarCommandHandler;
             _getCarByIdQueryHandler = getCarByIdQueryHandler;
@@ -28,6 +29,7 @@ namespace CarBook.WebApi.Controllers
             _updateCarCommandHandler = updateCarCommandHandler;
             _getCarWithBrandQueryHandler = getCarWithBrandQueryHandler;
             _getLast5CarsWithBrandQueryHandler = getLast5CarsWithBrandQueryHandler;
+            _getCarsByBrandQueryHandler = getCarsByBrandQueryHandler;
         }
 
         [HttpGet]
@@ -68,7 +70,7 @@ namespace CarBook.WebApi.Controllers
         [HttpGet("GetCarWithBrand")] // Farklı bir yol belirtin
         public IActionResult GetCarWithBrand()
         {
-            var values =_getCarWithBrandQueryHandler.Handle();
+            var values = _getCarWithBrandQueryHandler.Handle();
             return Ok(values);
         }
 
@@ -78,5 +80,13 @@ namespace CarBook.WebApi.Controllers
             var values = _getLast5CarsWithBrandQueryHandler.Handle();
             return Ok(values);
         }
+
+        [HttpGet("GetCarWithBrand/{id}")] // Farklı bir yol belirtin
+        public IActionResult GetCarWithBrand(int id)
+        {
+            var values = _getCarsByBrandQueryHandler.Handle(id);
+            return Ok(values);
+        }
+
     }
 }

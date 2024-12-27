@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarBook.Persistence.Migrations
 {
     [DbContext(typeof(CarBookContext))]
-    [Migration("20241226081229_init")]
+    [Migration("20241227124320_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -949,6 +949,35 @@ namespace CarBook.Persistence.Migrations
                         });
                 });
 
+            modelBuilder.Entity("CarBook.Domain.Entities.Comment", b =>
+                {
+                    b.Property<int>("CommentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CommentId"));
+
+                    b.Property<int>("BlogId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CommentId");
+
+                    b.HasIndex("BlogId");
+
+                    b.ToTable("Comments");
+                });
+
             modelBuilder.Entity("CarBook.Domain.Entities.Contact", b =>
                 {
                     b.Property<int>("ContactId")
@@ -1021,7 +1050,7 @@ namespace CarBook.Persistence.Migrations
                         new
                         {
                             FeatureId = 5,
-                            Name = "Sunroof"
+                            Name = "Wifi"
                         },
                         new
                         {
@@ -1037,6 +1066,26 @@ namespace CarBook.Persistence.Migrations
                         {
                             FeatureId = 8,
                             Name = "Park Sensörleri"
+                        },
+                        new
+                        {
+                            FeatureId = 9,
+                            Name = "Araç Kiti"
+                        },
+                        new
+                        {
+                            FeatureId = 10,
+                            Name = "Hava Yastığı"
+                        },
+                        new
+                        {
+                            FeatureId = 11,
+                            Name = "Çocuk Kiliti"
+                        },
+                        new
+                        {
+                            FeatureId = 12,
+                            Name = "Bebek Koltuğu"
                         });
                 });
 
@@ -1369,6 +1418,17 @@ namespace CarBook.Persistence.Migrations
                     b.Navigation("Pricing");
                 });
 
+            modelBuilder.Entity("CarBook.Domain.Entities.Comment", b =>
+                {
+                    b.HasOne("CarBook.Domain.Entities.Blog", "Blog")
+                        .WithMany("Comments")
+                        .HasForeignKey("BlogId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Blog");
+                });
+
             modelBuilder.Entity("CarBook.Domain.Entities.TagCloud", b =>
                 {
                     b.HasOne("CarBook.Domain.Entities.Blog", "Blog")
@@ -1387,6 +1447,8 @@ namespace CarBook.Persistence.Migrations
 
             modelBuilder.Entity("CarBook.Domain.Entities.Blog", b =>
                 {
+                    b.Navigation("Comments");
+
                     b.Navigation("TagClouds");
                 });
 

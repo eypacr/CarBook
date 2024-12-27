@@ -1047,7 +1047,7 @@ namespace CarBook.Persistence.Migrations
                         new
                         {
                             FeatureId = 5,
-                            Name = "Sunroof"
+                            Name = "Wifi"
                         },
                         new
                         {
@@ -1063,6 +1063,26 @@ namespace CarBook.Persistence.Migrations
                         {
                             FeatureId = 8,
                             Name = "Park Sensörleri"
+                        },
+                        new
+                        {
+                            FeatureId = 9,
+                            Name = "Araç Kiti"
+                        },
+                        new
+                        {
+                            FeatureId = 10,
+                            Name = "Hava Yastığı"
+                        },
+                        new
+                        {
+                            FeatureId = 11,
+                            Name = "Çocuk Kiliti"
+                        },
+                        new
+                        {
+                            FeatureId = 12,
+                            Name = "Bebek Koltuğu"
                         });
                 });
 

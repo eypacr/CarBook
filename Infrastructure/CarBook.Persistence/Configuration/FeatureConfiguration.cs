@@ -13,10 +13,14 @@ public class FeatureConfiguration : IEntityTypeConfiguration<Feature>
             new Feature { FeatureId = 2, Name = "GPS Navigasyon" },
             new Feature { FeatureId = 3, Name = "Bluetooth Bağlantısı" },
             new Feature { FeatureId = 4, Name = "Isıtmalı Koltuklar" },
-            new Feature { FeatureId = 5, Name = "Sunroof" },
+            new Feature { FeatureId = 5, Name = "Wifi" },
             new Feature { FeatureId = 6, Name = "Geri Görüş Kamerası" },
             new Feature { FeatureId = 7, Name = "Hız Sabitleyici" },
-            new Feature { FeatureId = 8, Name = "Park Sensörleri" }
+            new Feature { FeatureId = 8, Name = "Park Sensörleri" },
+            new Feature { FeatureId = 9, Name = "Araç Kiti" },
+            new Feature { FeatureId = 10, Name = "Hava Yastığı" },
+            new Feature { FeatureId = 11, Name = "Çocuk Kiliti" },
+            new Feature { FeatureId = 12, Name = "Bebek Koltuğu" }
         );
     }
 }

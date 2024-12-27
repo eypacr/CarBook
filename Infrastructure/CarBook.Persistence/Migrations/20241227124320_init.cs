@@ -335,6 +335,28 @@ namespace CarBook.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Comments",
+                columns: table => new
+                {
+                    CommentId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    BlogId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Comments", x => x.CommentId);
+                    table.ForeignKey(
+                        name: "FK_Comments_Blogs_BlogId",
+                        column: x => x.BlogId,
+                        principalTable: "Blogs",
+                        principalColumn: "BlogId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "TagClouds",
                 columns: table => new
                 {
@@ -411,10 +433,14 @@ namespace CarBook.Persistence.Migrations
                     { 2, "GPS Navigasyon" },
                     { 3, "Bluetooth Bağlantısı" },
                     { 4, "Isıtmalı Koltuklar" },
-                    { 5, "Sunroof" },
+                    { 5, "Wifi" },
                     { 6, "Geri Görüş Kamerası" },
                     { 7, "Hız Sabitleyici" },
-                    { 8, "Park Sensörleri" }
+                    { 8, "Park Sensörleri" },
+                    { 9, "Araç Kiti" },
+                    { 10, "Hava Yastığı" },
+                    { 11, "Çocuk Kiliti" },
+                    { 12, "Bebek Koltuğu" }
                 });
 
             migrationBuilder.InsertData(
@@ -590,6 +616,11 @@ namespace CarBook.Persistence.Migrations
                 column: "BrandId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Comments_BlogId",
+                table: "Comments",
+                column: "BlogId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_TagClouds_BlogId",
                 table: "TagClouds",
                 column: "BlogId");
@@ -612,6 +643,9 @@ namespace CarBook.Persistence.Migrations
 
             migrationBuilder.DropTable(
                 name: "CarPricings");
+
+            migrationBuilder.DropTable(
+                name: "Comments");
 
             migrationBuilder.DropTable(
                 name: "Contacts");

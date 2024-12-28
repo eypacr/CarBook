@@ -30,6 +30,7 @@ public static class RepositoryExtensions
         services.AddScoped<ICategoryRepository, CategoryRepository>();
         services.AddScoped<ITagCloudRepository, TagCloudRepository>();
         services.AddScoped<ICommentRepository, CommentRepository>();
+        services.AddScoped<IAuthorRepository, AuthorRepository>();
 
         return services;
     }

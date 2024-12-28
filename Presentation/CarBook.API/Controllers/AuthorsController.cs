@@ -1,5 +1,6 @@
 ﻿using CarBook.Application.Features.Mediator.Commands.AuthorCommands;
 using CarBook.Application.Features.Mediator.Queries.AuthorQueries;
+using CarBook.Application.Features.Mediator.Queries.BlogQueries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -50,5 +51,13 @@ namespace CarBook.WebApi.Controllers
 			await _mediator.Send(command);
 			return Ok("Yazar başarıyla güncellendi.");
 		}
-	}
+
+        [HttpGet("AuthorWithBlog/{id}")]
+        public async Task<IActionResult> AuthorWithBlog(int id)
+        {
+            var result = await _mediator.Send(new GetBlogsByAuthorQuery(id));
+
+            return Ok(result);
+        }
+    }
 }

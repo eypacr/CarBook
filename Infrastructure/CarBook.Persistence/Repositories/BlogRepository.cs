@@ -20,6 +20,17 @@ namespace CarBook.Persistence.Repositories
             return values;
         }
 
+        public async Task<List<Blog>> GetBlogsByCategoryAsync(int categoryId)
+        {
+            return await _context.Blogs
+                .Where(b => b.CategoryId == categoryId)
+                .Include(b => b.Author) 
+                .Include(b => b.TagClouds) 
+                .Include(b => b.Comments) 
+                .Include(b => b.Category)
+                .ToListAsync();
+        }
+
         public async Task<List<Blog>> GetBlogWithAllInfoById(int id)
         {
             return await _context.Blogs

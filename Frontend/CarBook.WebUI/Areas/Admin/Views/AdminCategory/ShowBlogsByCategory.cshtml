@@ -1,0 +1,49 @@
+﻿@model List<GetShowBlogsByCategoryDto>
+@{
+    ViewData["Title"] = "Marka Kategorisine Ait Bloglar";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Kategorideki Bloglar Listesi</h4>
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Sayısı</th>
+                                        <th>Blog Başlığı</th>
+                                        <th>Blog Resmi</th>
+                                        <th>Blog Açıklama</th>
+                                        <th>Yazar Adı Soyadı</th>
+                                        <th>Yazar Resmi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        count++;
+                                        <tr>
+                                            <th scope="row">@count</th>
+                                            <td>@item.Title</td>
+                                            <td><img src="@item.CoverImageUrl" alt="Cover Image" width="75" height="75" /></td>
+                                            <td>@item.Description</td>
+                                            <td>@item.AuthorName</td>
+                                            <td><img src="@item.AuthorImageUrl" alt="Author Image" width="75" height="75" /></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -20,6 +20,7 @@ public class CreateBlogCommandHandler : IRequestHandler<CreateBlogCommand>
 		{
 			Title = request.Title,
 			AuthorID = request.AuthorId,
+			Description = request.Description,
 			CoverImageUrl = request.CoverImageUrl,
 			CreatedDate = request.CreatedDate,
 			CategoryId = request.CategoryId,

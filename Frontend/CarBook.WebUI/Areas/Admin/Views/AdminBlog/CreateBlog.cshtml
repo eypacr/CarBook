@@ -1,0 +1,65 @@
+﻿@model CreateBlogDto
+
+@{
+    ViewData["Title"] = "CreateBlog";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Yeni Blog Bilgisi Girişi</h4>
+                        <p class="card-subtitle mb-4">Blog alanına veri girişini aşağıdaki panelden yapabilirsiniz.</p>
+
+                        <form method="post">
+                            <!-- Blog Başlık -->
+                            <div class="form-group">
+                                <label for="exampleInputTitle">Başlık</label>
+                                <input type="text" class="form-control" id="exampleInputTitle" asp-for="Title" placeholder="Blog Başlığını Giriniz" />
+                                <span asp-validation-for="Title" class="text-danger"></span>
+                            </div>
+
+                            <!-- Yazar Dropdown -->
+                            <div class="form-group">
+                                <label for="exampleInputAuthor">Yazar</label>
+                                <select class="form-control" id="exampleInputAuthor" asp-for="AuthorId" asp-items="ViewBag.AuthorValues">
+                                    <option value="">Yazar Seçin</option>
+                                </select>
+                                <span asp-validation-for="AuthorId" class="text-danger"></span>
+                            </div>
+
+                            <!-- Kategori Dropdown -->
+                            <div class="form-group">
+                                <label for="exampleInputCategory">Kategori</label>
+                                <select class="form-control" id="exampleInputCategory" asp-for="CategoryId" asp-items="ViewBag.CategoryValues">
+                                    <option value="">Kategori Seçin</option>
+                                </select>
+                                <span asp-validation-for="CategoryId" class="text-danger"></span>
+                            </div>
+
+                            <!-- Kapak Görsel URL -->
+                            <div class="form-group">
+                                <label for="exampleInputImageUrl">Kapak Görsel URL</label>
+                                <input type="text" class="form-control" id="exampleInputImageUrl" asp-for="CoverImageUrl" placeholder="Kapak Görsel URL Bilgisini Giriniz" />
+                                <span asp-validation-for="CoverImageUrl" class="text-danger"></span>
+                            </div>
+
+                            <!-- Açıklama (Description) Alanı -->
+                            <div class="form-group">
+                                <label for="exampleInputDescription">Açıklama</label>
+                                <textarea class="form-control" id="exampleInputDescription" asp-for="Description" placeholder="Blog Açıklaması Giriniz"></textarea>
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+
+                            <!-- Submit Butonu -->
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Blogu Kaydet</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

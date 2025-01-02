@@ -1,8 +1,6 @@
-﻿using CarBook.Domain.Entities;
+﻿namespace CarBook.WebUI.Dtos.CommentDtos;
 
-namespace CarBook.Application.Dtos.CommentDtos;
-
-public class CreateCommentDto
+public class CommentCreateDto
 {
     public string Name { get; set; }
     public string Surname { get; set; }
@@ -10,5 +8,4 @@ public class CreateCommentDto
     public string Email { get; set; }
     public DateTime CreatedDate { get; set; }
     public int BlogId { get; set; }
-    public Blog Blog { get; set; }
 }

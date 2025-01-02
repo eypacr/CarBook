@@ -1,7 +1,6 @@
-﻿using CarBook.Application.Dtos.CommentDtos;
-using CarBook.Application.RepositoryInterfaces;
-using CarBook.Domain.Entities;
-using CarBook.Persistence.Repositories;
+﻿using CarBook.Application.Features.Mediator.Commands.CommentCommands;
+using CarBook.Application.Features.Mediator.Queries.CommentQueries;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarBook.API.Controllers
@@ -10,93 +9,47 @@ namespace CarBook.API.Controllers
     [ApiController]
     public class CommentsController : ControllerBase
     {
-        private readonly ICommentRepository _repository;
+        private readonly IMediator _mediator;
 
-        public CommentsController(ICommentRepository repository)
+        public CommentsController(IMediator mediator)
         {
-            _repository = repository;
+            _mediator = mediator;
         }
-
         [HttpGet]
-        public async Task<IActionResult> CommentList()=> Ok(await _repository.GetAllAsync());
-        
+        public async Task<IActionResult> ListComment()
+        {
+            var values = await _mediator.Send(new GetCommentQuery());
+            return Ok(values);
+        }
+        [HttpGet("GetCommentByBlogId/{id}")]
+        public async Task<IActionResult> GetCommentByBlogId(int id)
+        {
+            var values = await _mediator.Send(new GetCommentByBlogIdQuery(id));
+            return Ok(values);
+        }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetComment(int id)
         {
-            var values = await _repository.GetByIdAsync(id);
-            if (values == null)
-            {
-                return BadRequest("Aradığınız id Bulunamadı");  
-            }
-            return Ok(values);
+            var value = await _mediator.Send(new GetCommentByIdQuery(id));
+            return Ok(value);
         }
-
         [HttpPost]
-        public async Task<IActionResult> CreateComment(CreateCommentDto createCommentDto)
+        public async Task<IActionResult> CreateComment(CreateCommentCommand command)
         {
-            // BlogId'yi kullanarak veritabanında ilgili blogu arıyoruz.
-            var blog = await _repository.GetByIdAsync(createCommentDto.BlogId);
-
-            // Blog bulunamadıysa, hata mesajı döndür.
-            if (blog == null)
-            {
-                return NotFound("Geçerli bir Blog Id gereklidir.");
-            }
-
-            // Blog var ise, yeni yorum nesnesi oluşturuluyor.
-            var comment = new Comment
-            {
-                Name = createCommentDto.Name,
-                CreatedDate = createCommentDto.CreatedDate,
-                Description = createCommentDto.Description,
-                BlogId = createCommentDto.BlogId
-            };
-
-            // Yorum veritabanına kaydediliyor.
-            await _repository.CreateAsync(comment);
-
-            return Ok("Yorum bilgisi başarıyla eklendi.");
+            await _mediator.Send(command);
+            return Ok();
         }
-
-
-
         [HttpPut]
-        public async Task<IActionResult> UpdateComment(UpdateCommentDto updateCommentDto)
+        public async Task<IActionResult> UpdateComment(UpdateCommentCommand command)
         {
-            var values = await _repository.GetByIdAsync(updateCommentDto.CommentId);
-            if (values == null)
-            {
-                return NotFound("Aradığınız id bulunamadı");
-            }
-
-            var blog = await _repository.GetByIdAsync(updateCommentDto.BlogId);
-            if (blog == null)
-            {
-                return NotFound("Geçerli bir Blog Id gereklidir.");
-            }
-
-            values.Name = updateCommentDto.Name;
-            values.CreatedDate = updateCommentDto.CreatedDate;
-            values.Description = updateCommentDto.Description;
-            values.BlogId = updateCommentDto.BlogId;
-
-            await _repository.UpdateAsync(values);
-            return Ok("Yorum bilgisi başarıyla güncellendi.");
+            await _mediator.Send(command);
+            return Ok();
         }
-
-
         [HttpDelete("{id}")]
-        public async Task<IActionResult> RemoveComment(int id)
+        public async Task<IActionResult> DeleteComment(int id)
         {
-            var comment = await _repository.GetByIdAsync(id);
-            if (comment == null)
-            {
-                return NotFound("Aradığınız id bulunamadı");
-            }
-
-            await _repository.RemoveAsync(comment);
-            return NoContent();
+            await _mediator.Send(new DeleteCommentCommand(id));
+            return Ok();
         }
-
     }
 }

@@ -1,8 +1,8 @@
-﻿using CarBook.Domain.Entities;
+﻿using MediatR;
 
-namespace CarBook.Application.Dtos.CommentDtos;
+namespace CarBook.Application.Features.Mediator.Commands.CommentCommands;
 
-public class CreateCommentDto
+public class CreateCommentCommand : IRequest
 {
     public string Name { get; set; }
     public string Surname { get; set; }
@@ -10,5 +10,4 @@ public class CreateCommentDto
     public string Email { get; set; }
     public DateTime CreatedDate { get; set; }
     public int BlogId { get; set; }
-    public Blog Blog { get; set; }
 }

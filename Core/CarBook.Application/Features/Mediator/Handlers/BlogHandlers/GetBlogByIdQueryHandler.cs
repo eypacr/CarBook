@@ -18,13 +18,19 @@ public class GetBlogByIdQueryHandler : IRequestHandler<GetBlogByIdQuery, GetBlog
 	public async Task<GetBlogByIdQueryResult> Handle(GetBlogByIdQuery request, CancellationToken cancellationToken)
 	{
 		var values = await _repository.GetByIdAsync(request.Id);
-		return new GetBlogByIdQueryResult
+
+        if (values == null)
+        {
+            throw new KeyNotFoundException($"ID'si {request.Id} olan blog bulunamadı.");
+        }
+        return new GetBlogByIdQueryResult
 		{
 			BlogId = values.BlogId,
 			Title = values.Title,
 			CreatedDate = values.CreatedDate,
 			CoverImageUrl = values.CoverImageUrl,
 			AuthorId = values.AuthorID,
+			Description=values.Description,
 			CategoryId = values.CategoryId
 		};
 	}

@@ -23,6 +23,7 @@ public class GetBlogQueryHandler : IRequestHandler<GetBlogQuery, List<GetBlogQue
 			BlogId = x.BlogId,
 			AuthorId = x.AuthorID,
 			CategoryId = x.CategoryId,
+			Description= x.Description,
 			CoverImageUrl = x.CoverImageUrl,
 			CreatedDate = x.CreatedDate,
 			Title = x.Title

@@ -10,7 +10,13 @@ public class CommentRepository : Repository<Comment>,ICommentRepository
     public CommentRepository(CarBookContext context) : base(context)
     {
     }
-
+    public async Task<Comment> GetByCommentIdAsync(int id)
+    {
+        return await _context.Comments
+            .Include(x => x.Blog)
+            .ThenInclude(x => x.Author)
+            .FirstOrDefaultAsync(x => x.CommentId == id);
+    }
     public List<Comment> GetCommentListByBlogId(int id)
     {
         var values = _context.Comments.Where(x => x.BlogId == id).Include(x => x.Blog).ThenInclude(x => x.Author).ToList();

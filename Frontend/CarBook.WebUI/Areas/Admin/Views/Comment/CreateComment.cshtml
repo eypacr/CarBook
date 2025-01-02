@@ -1,0 +1,73 @@
+﻿@model CommentCreateDto
+@{
+    ViewData["Title"] = "CreateComment";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-flex align-items-center justify-content-between">
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="/Admin/Comment/Index">Yorumlar</a></li>
+                    <li class="breadcrumb-item active">Yeni Yorum Girişi</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xl-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="Commentd-title">Yeni Yorum Girişi</h4>
+                <p class="Commentd-subtitle mb-4">Yorum ile ilgili temel bilgileri eksiksiz doldurmanız önemlidir. Veri girişlerinden sonra kaydet butonuna tıklayarak işlemi tamamlayabilirsiniz.</p>
+                <form method="post">
+                    <div class="row">
+                        <div class="col col-md-6">
+                            <div class="form-group">
+                                <label>Adı</label>
+                                <input type="text" class="form-control" asp-for="Name" />
+                                <span class="text-danger" asp-validation-for="Name"></span>
+                            </div>
+                            <div class="form-group">
+                                <label>Soyadı</label>
+                                <input type="text" class="form-control" asp-for="Surname" />
+                                <span class="text-danger" asp-validation-for="Surname"></span>
+                            </div>
+                        </div>
+                        <div class="col col-md-6">
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" class="form-control" asp-for="Email" />
+                                <span class="text-danger" asp-validation-for="Email"></span>
+                            </div>
+                            <div class="form-group">
+                                <label>Tarih</label>
+                                <input type="text" class="form-control" readonly asp-for="CreatedDate" value="@DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")" />
+                                <span class="text-danger" asp-validation-for="CreatedDate"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label for="exampleInputAuthor">Hangi Bloğa Yorum Yapacaksanız</label>
+                        <select class="form-control" id="exampleInputAuthor" asp-for="BlogId" asp-items="ViewBag.CommentBlogList">
+                            <option value="">Blog Seçiniz</option>
+                        </select>
+                        <span asp-validation-for="BlogId" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col">
+                            <textarea asp-for="Text" class="form-control" rows="10"></textarea>
+                        </div>
+                    </div>
+                    <br />
+                    <button type="submit" class="btn btn-warning waves-effect waves-light"><i class="mdi mdi-update"></i> Kaydet</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

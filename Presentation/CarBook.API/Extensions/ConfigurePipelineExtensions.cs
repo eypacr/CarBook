@@ -1,4 +1,6 @@
-﻿namespace CarBook.API.Extensions;
+﻿using System.Text.Json.Serialization;
+
+namespace CarBook.API.Extensions;
 
 public static class ConfigurePipelineExtensions
 {

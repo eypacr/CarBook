@@ -1,0 +1,79 @@
+﻿@model ContactUpdateDto
+@{
+    ViewData["Title"] = "İletişim Güncelle";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-flex align-items-center justify-content-between">
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="/Admin/Contact/Index">İletişimler</a></li>
+                    <li class="breadcrumb-item active">İletişim Güncelle</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xl-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="Contactd-title">İletişim Güncelle</h4>
+                <p class="Contactd-subtitle mb-4">İletişim ile ilgili temel bilgileri eksiksiz doldurmanız önemlidir. Veri girişlerinden sonra kaydet butonuna tıklayarak işlemi tamamlayabilirsiniz.</p>
+
+                <form method="post">
+                    <div class="row">
+                        <input type="hidden" asp-for="ContactId" />
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="Name">İletişim Adı</label>
+                                <input type="text" id="Name" class="form-control" asp-for="Name" placeholder="İletişim Adını Girin">
+                                <span class="text-danger" asp-validation-for="Name"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="Email">E-posta</label>
+                                <input type="email" id="Email" class="form-control" asp-for="Email" placeholder="E-posta adresini girin">
+                                <span class="text-danger" asp-validation-for="Email"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="Subject">Konu</label>
+                                <input type="text" id="Subject" class="form-control" asp-for="Subject" placeholder="Konu girin">
+                                <span class="text-danger" asp-validation-for="Subject"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="Message">Mesaj</label>
+                                <textarea id="Message" class="form-control" asp-for="Message" rows="4" placeholder="Mesajınızı yazın"></textarea>
+                                <span class="text-danger" asp-validation-for="Message"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="SendingDate">Gönderim Tarihi</label>
+                                <input type="text" id="SendingDate" class="form-control" asp-for="SendingDate" disabled placeholder="Tarih bilgisi">
+                                <span class="text-danger" asp-validation-for="SendingDate"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-warning waves-effect waves-light">
+                        <i class="mdi mdi-update"></i> Güncelle
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

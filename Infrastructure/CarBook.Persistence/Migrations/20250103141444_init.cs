@@ -446,6 +446,24 @@ namespace CarBook.Persistence.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "FooterAddresses",
+                columns: new[] { "FooterAddressId", "Address", "Description", "Email", "Phone" },
+                values: new object[] { 1, "123 Ana Cadde, Şehir, Ülke", "Merkezi Ofis", "info@AracKiralama.com", "+90 123 456 7890" });
+
+            migrationBuilder.InsertData(
+                table: "Locations",
+                columns: new[] { "LocationId", "Name" },
+                values: new object[,]
+                {
+                    { 1, "İstanbul" },
+                    { 2, "Ankara" },
+                    { 3, "İzmir" },
+                    { 4, "Bursa" },
+                    { 5, "Antalya" },
+                    { 6, "Adana" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Pricings",
                 columns: new[] { "PricingId", "Name" },
                 values: new object[,]
@@ -465,6 +483,17 @@ namespace CarBook.Persistence.Migrations
                     { 2, "Şehir turlarınızın unutulmaz olması için profesyonel ve kapsamlı hizmetler sunuyoruz.", "flaticon-transportation", "Şehir Turları" },
                     { 3, "VIP servislerimiz ile özel anlarınızı unutulmaz kılmak için profesyonel ve kapsamlı hizmetler sunuyoruz.", "flaticon-car", "VIP Servis" },
                     { 4, "Havalimanı aktarmalarınız için profesyonel ve güvenilir VIP servisler sunuyoruz.", "flaticon-rent", "Havalimanı Aktarmaları" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "SocialMedias",
+                columns: new[] { "SocialMediaId", "Icon", "Name", "Url" },
+                values: new object[,]
+                {
+                    { 1, "fab fa-facebook", "Facebook", "https://www.facebook.com" },
+                    { 2, "fab fa-twitter", "Twitter", "https://www.twitter.com" },
+                    { 3, "fab fa-instagram", "Instagram", "https://www.instagram.com" },
+                    { 4, "fab fa-linkedin", "LinkedIn", "https://www.linkedin.com" }
                 });
 
             migrationBuilder.InsertData(
@@ -494,18 +523,18 @@ namespace CarBook.Persistence.Migrations
                 columns: new[] { "CarId", "BigImageUrl", "BrandId", "CoverImageUrl", "Fuel", "Km", "Luggage", "Model", "Seat", "Transmission" },
                 values: new object[,]
                 {
-                    { 1, "/carbook-master/images/car-1.jpg", 1, "/carbook-master/images/car-1.jpg", "Benzin", 0, (byte)2, "E-200", (byte)5, "Otomatik" },
-                    { 2, "/carbook-master/images/car-2.jpg", 2, "/carbook-master/images/car-2.jpg", "Dizel", 0, (byte)2, "Velar", (byte)5, "Otomatik" },
-                    { 3, "/carbook-master/images/car-5.jpg", 3, "/carbook-master/images/car-5.jpg", "Benzin", 0, (byte)2, "BMW Serisi", (byte)5, "Otomatik" },
-                    { 4, "/carbook-master/images/car-12.jpg", 4, "/carbook-master/images/car-12.jpg", "Benzin", 0, (byte)2, "A3", (byte)5, "Manuel" },
-                    { 5, "/carbook-master/images/car-4.jpg", 5, "/carbook-master/images/car-4.jpg", "Benzin", 0, (byte)2, "Clio", (byte)5, "Manuel" },
-                    { 6, "/carbook-master/images/car-3.jpg", 6, "/carbook-master/images/car-3.jpg", "Dizel", 0, (byte)2, "Passat", (byte)5, "Otomatik" },
-                    { 7, "/carbook-master/images/car-6.jpg", 7, "/carbook-master/images/car-6.jpg", "Dizel", 0, (byte)2, "Corolla", (byte)5, "Manuel" },
-                    { 8, "/carbook-master/images/car-8.jpg", 8, "/carbook-master/images/car-8.jpg", "Benzin", 0, (byte)2, "Cherokee", (byte)5, "Manuel" },
-                    { 9, "/carbook-master/images/car-7.jpg", 1, "/carbook-master/images/car-7.jpg", "Benzin", 0, (byte)2, " S 350 BlueTEC 4Matic ", (byte)5, "Manuel" },
-                    { 10, "/carbook-master/images/car-9.jpg", 1, "/carbook-master/images/car-9.jpg", "Dizel", 0, (byte)2, "S 320 CDI ", (byte)5, "Otomatik" },
-                    { 11, "/carbook-master/images/car-10.jpg", 1, "/carbook-master/images/car-10.jpg", "Dizel", 0, (byte)2, "S 400 400", (byte)5, "Otomatik" },
-                    { 12, "/carbook-master/images/car-11.jpg", 1, "/carbook-master/images/car-11.jpg", "Benzin", 0, (byte)2, "S 500 500 L", (byte)5, "Otomatik" }
+                    { 1, "/carbook-master/images/car-1.jpg", 1, "/carbook-master/images/car-1.jpg", "Benzin", 5000, (byte)2, "E-200", (byte)5, "Otomatik" },
+                    { 2, "/carbook-master/images/car-2.jpg", 2, "/carbook-master/images/car-2.jpg", "Dizel", 12000, (byte)3, "Velar", (byte)5, "Otomatik" },
+                    { 3, "/carbook-master/images/car-5.jpg", 3, "/carbook-master/images/car-5.jpg", "Elektrik", 8000, (byte)2, "BMW Serisi", (byte)5, "Manuel" },
+                    { 4, "/carbook-master/images/car-12.jpg", 4, "/carbook-master/images/car-12.jpg", "Benzin", 15000, (byte)1, "A3", (byte)4, "Manuel" },
+                    { 5, "/carbook-master/images/car-4.jpg", 5, "/carbook-master/images/car-4.jpg", "Dizel", 3000, (byte)1, "Clio", (byte)5, "Manuel" },
+                    { 6, "/carbook-master/images/car-3.jpg", 6, "/carbook-master/images/car-3.jpg", "Elektrik", 10000, (byte)3, "Passat", (byte)5, "Otomatik" },
+                    { 7, "/carbook-master/images/car-6.jpg", 7, "/carbook-master/images/car-6.jpg", "Dizel", 20000, (byte)2, "Corolla", (byte)5, "Manuel" },
+                    { 8, "/carbook-master/images/car-8.jpg", 8, "/carbook-master/images/car-8.jpg", "Benzin", 15000, (byte)2, "Cherokee", (byte)5, "Otomatik" },
+                    { 9, "/carbook-master/images/car-7.jpg", 1, "/carbook-master/images/car-7.jpg", "Dizel", 18000, (byte)3, "S 350 BlueTEC 4Matic", (byte)5, "Otomatik" },
+                    { 10, "/carbook-master/images/car-9.jpg", 1, "/carbook-master/images/car-9.jpg", "Dizel", 22000, (byte)2, "S 320 CDI", (byte)5, "Manuel" },
+                    { 11, "/carbook-master/images/car-10.jpg", 1, "/carbook-master/images/car-10.jpg", "Elektrik", 5000, (byte)3, "S 400 400", (byte)5, "Otomatik" },
+                    { 12, "/carbook-master/images/car-11.jpg", 1, "/carbook-master/images/car-11.jpg", "Benzin", 12000, (byte)2, "S 500 500 L", (byte)5, "Manuel" }
                 });
 
             migrationBuilder.InsertData(
@@ -563,18 +592,67 @@ namespace CarBook.Persistence.Migrations
                 columns: new[] { "CarPricingId", "Amount", "CarId", "PricingId" },
                 values: new object[,]
                 {
-                    { 1, 900m, 1, 2 },
-                    { 2, 950m, 2, 2 },
-                    { 3, 1000m, 3, 2 },
-                    { 4, 1050m, 4, 2 },
-                    { 5, 1100m, 5, 2 },
-                    { 6, 1150m, 6, 2 },
-                    { 7, 1200m, 7, 2 },
-                    { 8, 1250m, 8, 2 },
-                    { 9, 1300m, 9, 2 },
-                    { 10, 1350m, 10, 2 },
-                    { 11, 1400m, 11, 2 },
-                    { 12, 1450m, 12, 2 }
+                    { 1, 100m, 1, 1 },
+                    { 2, 900m, 1, 2 },
+                    { 3, 6000m, 1, 3 },
+                    { 4, 20000m, 1, 4 },
+                    { 5, 110m, 2, 1 },
+                    { 6, 950m, 2, 2 },
+                    { 7, 6300m, 2, 3 },
+                    { 8, 21000m, 2, 4 },
+                    { 9, 120m, 3, 1 },
+                    { 10, 1000m, 3, 2 },
+                    { 11, 7000m, 3, 3 },
+                    { 12, 23000m, 3, 4 },
+                    { 13, 130m, 4, 1 },
+                    { 14, 1050m, 4, 2 },
+                    { 15, 7350m, 4, 3 },
+                    { 16, 24500m, 4, 4 },
+                    { 17, 140m, 5, 1 },
+                    { 18, 1100m, 5, 2 },
+                    { 19, 7700m, 5, 3 },
+                    { 20, 26000m, 5, 4 },
+                    { 21, 150m, 6, 1 },
+                    { 22, 1150m, 6, 2 },
+                    { 23, 8050m, 6, 3 },
+                    { 24, 27500m, 6, 4 },
+                    { 25, 160m, 7, 1 },
+                    { 26, 1200m, 7, 2 },
+                    { 27, 8400m, 7, 3 },
+                    { 28, 29000m, 7, 4 },
+                    { 29, 170m, 8, 1 },
+                    { 30, 1250m, 8, 2 },
+                    { 31, 8750m, 8, 3 },
+                    { 32, 30500m, 8, 4 },
+                    { 33, 180m, 9, 1 },
+                    { 34, 1300m, 9, 2 },
+                    { 35, 9100m, 9, 3 },
+                    { 36, 32000m, 9, 4 },
+                    { 37, 190m, 10, 1 },
+                    { 38, 1350m, 10, 2 },
+                    { 39, 9450m, 10, 3 },
+                    { 40, 33500m, 10, 4 },
+                    { 41, 200m, 11, 1 },
+                    { 42, 1400m, 11, 2 },
+                    { 43, 9800m, 11, 3 },
+                    { 44, 35000m, 11, 4 },
+                    { 45, 210m, 12, 1 },
+                    { 46, 1450m, 12, 2 },
+                    { 47, 10150m, 12, 3 },
+                    { 48, 36500m, 12, 4 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Comments",
+                columns: new[] { "CommentId", "BlogId", "CreatedDate", "Email", "Name", "Surname", "Text" },
+                values: new object[,]
+                {
+                    { 1, 1, new DateTime(2023, 6, 16, 10, 20, 0, 0, DateTimeKind.Unspecified), "ahmet.yilmaz@example.com", "Ahmet", "Yılmaz", "Elektrikli araçlar hakkında çok bilgilendirici bir yazı olmuş." },
+                    { 2, 2, new DateTime(2023, 7, 21, 14, 30, 0, 0, DateTimeKind.Unspecified), "mehmet.kaya@example.com", "Mehmet", "Kaya", "SUV araçları gerçekten çok kullanışlı ve konforlu. Güzel bir yazı." },
+                    { 3, 3, new DateTime(2023, 8, 12, 9, 15, 0, 0, DateTimeKind.Unspecified), "ayse.demir@example.com", "Ayşe", "Demir", "Sedan arabaların konforu gerçekten çok güzel, ancak ben performansı biraz daha yüksek beklerdim." },
+                    { 4, 4, new DateTime(2023, 9, 6, 16, 45, 0, 0, DateTimeKind.Unspecified), "fatma.can@example.com", "Fatma", "Can", "Kamyonlar çok dayanıklı ama şehir içi kullanımda zorlanıyorlar. Güzel yazı." },
+                    { 5, 1, new DateTime(2023, 6, 17, 11, 10, 0, 0, DateTimeKind.Unspecified), "ali.sahin@example.com", "Ali", "Şahin", "Elektrikli araçların geleceği çok parlak görünüyor, yakından takip ediyorum." },
+                    { 6, 2, new DateTime(2023, 7, 22, 13, 0, 0, 0, DateTimeKind.Unspecified), "elif.acar@example.com", "Elif", "Acar", "SUV modellerinin avantajları gerçekten doğru tespit edilmiş, ancak fiyatları biraz yüksek." }
                 });
 
             migrationBuilder.CreateIndex(

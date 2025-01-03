@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarBook.Persistence.Migrations
 {
     [DbContext(typeof(CarBookContext))]
-    [Migration("20250102140035_SeedDataLocation")]
-    partial class SeedDataLocation
+    [Migration("20250103141444_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -346,7 +346,7 @@ namespace CarBook.Persistence.Migrations
                             BrandId = 1,
                             CoverImageUrl = "/carbook-master/images/car-1.jpg",
                             Fuel = "Benzin",
-                            Km = 0,
+                            Km = 5000,
                             Luggage = (byte)2,
                             Model = "E-200",
                             Seat = (byte)5,
@@ -359,8 +359,8 @@ namespace CarBook.Persistence.Migrations
                             BrandId = 2,
                             CoverImageUrl = "/carbook-master/images/car-2.jpg",
                             Fuel = "Dizel",
-                            Km = 0,
-                            Luggage = (byte)2,
+                            Km = 12000,
+                            Luggage = (byte)3,
                             Model = "Velar",
                             Seat = (byte)5,
                             Transmission = "Otomatik"
@@ -371,12 +371,12 @@ namespace CarBook.Persistence.Migrations
                             BigImageUrl = "/carbook-master/images/car-5.jpg",
                             BrandId = 3,
                             CoverImageUrl = "/carbook-master/images/car-5.jpg",
-                            Fuel = "Benzin",
-                            Km = 0,
+                            Fuel = "Elektrik",
+                            Km = 8000,
                             Luggage = (byte)2,
                             Model = "BMW Serisi",
                             Seat = (byte)5,
-                            Transmission = "Otomatik"
+                            Transmission = "Manuel"
                         },
                         new
                         {
@@ -385,10 +385,10 @@ namespace CarBook.Persistence.Migrations
                             BrandId = 4,
                             CoverImageUrl = "/carbook-master/images/car-12.jpg",
                             Fuel = "Benzin",
-                            Km = 0,
-                            Luggage = (byte)2,
+                            Km = 15000,
+                            Luggage = (byte)1,
                             Model = "A3",
-                            Seat = (byte)5,
+                            Seat = (byte)4,
                             Transmission = "Manuel"
                         },
                         new
@@ -397,9 +397,9 @@ namespace CarBook.Persistence.Migrations
                             BigImageUrl = "/carbook-master/images/car-4.jpg",
                             BrandId = 5,
                             CoverImageUrl = "/carbook-master/images/car-4.jpg",
-                            Fuel = "Benzin",
-                            Km = 0,
-                            Luggage = (byte)2,
+                            Fuel = "Dizel",
+                            Km = 3000,
+                            Luggage = (byte)1,
                             Model = "Clio",
                             Seat = (byte)5,
                             Transmission = "Manuel"
@@ -410,9 +410,9 @@ namespace CarBook.Persistence.Migrations
                             BigImageUrl = "/carbook-master/images/car-3.jpg",
                             BrandId = 6,
                             CoverImageUrl = "/carbook-master/images/car-3.jpg",
-                            Fuel = "Dizel",
-                            Km = 0,
-                            Luggage = (byte)2,
+                            Fuel = "Elektrik",
+                            Km = 10000,
+                            Luggage = (byte)3,
                             Model = "Passat",
                             Seat = (byte)5,
                             Transmission = "Otomatik"
@@ -424,7 +424,7 @@ namespace CarBook.Persistence.Migrations
                             BrandId = 7,
                             CoverImageUrl = "/carbook-master/images/car-6.jpg",
                             Fuel = "Dizel",
-                            Km = 0,
+                            Km = 20000,
                             Luggage = (byte)2,
                             Model = "Corolla",
                             Seat = (byte)5,
@@ -437,11 +437,11 @@ namespace CarBook.Persistence.Migrations
                             BrandId = 8,
                             CoverImageUrl = "/carbook-master/images/car-8.jpg",
                             Fuel = "Benzin",
-                            Km = 0,
+                            Km = 15000,
                             Luggage = (byte)2,
                             Model = "Cherokee",
                             Seat = (byte)5,
-                            Transmission = "Manuel"
+                            Transmission = "Otomatik"
                         },
                         new
                         {
@@ -449,12 +449,12 @@ namespace CarBook.Persistence.Migrations
                             BigImageUrl = "/carbook-master/images/car-7.jpg",
                             BrandId = 1,
                             CoverImageUrl = "/carbook-master/images/car-7.jpg",
-                            Fuel = "Benzin",
-                            Km = 0,
-                            Luggage = (byte)2,
-                            Model = " S 350 BlueTEC 4Matic ",
+                            Fuel = "Dizel",
+                            Km = 18000,
+                            Luggage = (byte)3,
+                            Model = "S 350 BlueTEC 4Matic",
                             Seat = (byte)5,
-                            Transmission = "Manuel"
+                            Transmission = "Otomatik"
                         },
                         new
                         {
@@ -463,11 +463,11 @@ namespace CarBook.Persistence.Migrations
                             BrandId = 1,
                             CoverImageUrl = "/carbook-master/images/car-9.jpg",
                             Fuel = "Dizel",
-                            Km = 0,
+                            Km = 22000,
                             Luggage = (byte)2,
-                            Model = "S 320 CDI ",
+                            Model = "S 320 CDI",
                             Seat = (byte)5,
-                            Transmission = "Otomatik"
+                            Transmission = "Manuel"
                         },
                         new
                         {
@@ -475,9 +475,9 @@ namespace CarBook.Persistence.Migrations
                             BigImageUrl = "/carbook-master/images/car-10.jpg",
                             BrandId = 1,
                             CoverImageUrl = "/carbook-master/images/car-10.jpg",
-                            Fuel = "Dizel",
-                            Km = 0,
-                            Luggage = (byte)2,
+                            Fuel = "Elektrik",
+                            Km = 5000,
+                            Luggage = (byte)3,
                             Model = "S 400 400",
                             Seat = (byte)5,
                             Transmission = "Otomatik"
@@ -489,11 +489,11 @@ namespace CarBook.Persistence.Migrations
                             BrandId = 1,
                             CoverImageUrl = "/carbook-master/images/car-11.jpg",
                             Fuel = "Benzin",
-                            Km = 0,
+                            Km = 12000,
                             Luggage = (byte)2,
                             Model = "S 500 500 L",
                             Seat = (byte)5,
-                            Transmission = "Otomatik"
+                            Transmission = "Manuel"
                         });
                 });
 
@@ -822,86 +822,338 @@ namespace CarBook.Persistence.Migrations
                         new
                         {
                             CarPricingId = 1,
+                            Amount = 100m,
+                            CarId = 1,
+                            PricingId = 1
+                        },
+                        new
+                        {
+                            CarPricingId = 2,
                             Amount = 900m,
                             CarId = 1,
                             PricingId = 2
                         },
                         new
                         {
-                            CarPricingId = 2,
+                            CarPricingId = 3,
+                            Amount = 6000m,
+                            CarId = 1,
+                            PricingId = 3
+                        },
+                        new
+                        {
+                            CarPricingId = 4,
+                            Amount = 20000m,
+                            CarId = 1,
+                            PricingId = 4
+                        },
+                        new
+                        {
+                            CarPricingId = 5,
+                            Amount = 110m,
+                            CarId = 2,
+                            PricingId = 1
+                        },
+                        new
+                        {
+                            CarPricingId = 6,
                             Amount = 950m,
                             CarId = 2,
                             PricingId = 2
                         },
                         new
                         {
-                            CarPricingId = 3,
+                            CarPricingId = 7,
+                            Amount = 6300m,
+                            CarId = 2,
+                            PricingId = 3
+                        },
+                        new
+                        {
+                            CarPricingId = 8,
+                            Amount = 21000m,
+                            CarId = 2,
+                            PricingId = 4
+                        },
+                        new
+                        {
+                            CarPricingId = 9,
+                            Amount = 120m,
+                            CarId = 3,
+                            PricingId = 1
+                        },
+                        new
+                        {
+                            CarPricingId = 10,
                             Amount = 1000m,
                             CarId = 3,
                             PricingId = 2
                         },
                         new
                         {
-                            CarPricingId = 4,
+                            CarPricingId = 11,
+                            Amount = 7000m,
+                            CarId = 3,
+                            PricingId = 3
+                        },
+                        new
+                        {
+                            CarPricingId = 12,
+                            Amount = 23000m,
+                            CarId = 3,
+                            PricingId = 4
+                        },
+                        new
+                        {
+                            CarPricingId = 13,
+                            Amount = 130m,
+                            CarId = 4,
+                            PricingId = 1
+                        },
+                        new
+                        {
+                            CarPricingId = 14,
                             Amount = 1050m,
                             CarId = 4,
                             PricingId = 2
                         },
                         new
                         {
-                            CarPricingId = 5,
+                            CarPricingId = 15,
+                            Amount = 7350m,
+                            CarId = 4,
+                            PricingId = 3
+                        },
+                        new
+                        {
+                            CarPricingId = 16,
+                            Amount = 24500m,
+                            CarId = 4,
+                            PricingId = 4
+                        },
+                        new
+                        {
+                            CarPricingId = 17,
+                            Amount = 140m,
+                            CarId = 5,
+                            PricingId = 1
+                        },
+                        new
+                        {
+                            CarPricingId = 18,
                             Amount = 1100m,
                             CarId = 5,
                             PricingId = 2
                         },
                         new
                         {
-                            CarPricingId = 6,
+                            CarPricingId = 19,
+                            Amount = 7700m,
+                            CarId = 5,
+                            PricingId = 3
+                        },
+                        new
+                        {
+                            CarPricingId = 20,
+                            Amount = 26000m,
+                            CarId = 5,
+                            PricingId = 4
+                        },
+                        new
+                        {
+                            CarPricingId = 21,
+                            Amount = 150m,
+                            CarId = 6,
+                            PricingId = 1
+                        },
+                        new
+                        {
+                            CarPricingId = 22,
                             Amount = 1150m,
                             CarId = 6,
                             PricingId = 2
                         },
                         new
                         {
-                            CarPricingId = 7,
+                            CarPricingId = 23,
+                            Amount = 8050m,
+                            CarId = 6,
+                            PricingId = 3
+                        },
+                        new
+                        {
+                            CarPricingId = 24,
+                            Amount = 27500m,
+                            CarId = 6,
+                            PricingId = 4
+                        },
+                        new
+                        {
+                            CarPricingId = 25,
+                            Amount = 160m,
+                            CarId = 7,
+                            PricingId = 1
+                        },
+                        new
+                        {
+                            CarPricingId = 26,
                             Amount = 1200m,
                             CarId = 7,
                             PricingId = 2
                         },
                         new
                         {
-                            CarPricingId = 8,
+                            CarPricingId = 27,
+                            Amount = 8400m,
+                            CarId = 7,
+                            PricingId = 3
+                        },
+                        new
+                        {
+                            CarPricingId = 28,
+                            Amount = 29000m,
+                            CarId = 7,
+                            PricingId = 4
+                        },
+                        new
+                        {
+                            CarPricingId = 29,
+                            Amount = 170m,
+                            CarId = 8,
+                            PricingId = 1
+                        },
+                        new
+                        {
+                            CarPricingId = 30,
                             Amount = 1250m,
                             CarId = 8,
                             PricingId = 2
                         },
                         new
                         {
-                            CarPricingId = 9,
+                            CarPricingId = 31,
+                            Amount = 8750m,
+                            CarId = 8,
+                            PricingId = 3
+                        },
+                        new
+                        {
+                            CarPricingId = 32,
+                            Amount = 30500m,
+                            CarId = 8,
+                            PricingId = 4
+                        },
+                        new
+                        {
+                            CarPricingId = 33,
+                            Amount = 180m,
+                            CarId = 9,
+                            PricingId = 1
+                        },
+                        new
+                        {
+                            CarPricingId = 34,
                             Amount = 1300m,
                             CarId = 9,
                             PricingId = 2
                         },
                         new
                         {
-                            CarPricingId = 10,
+                            CarPricingId = 35,
+                            Amount = 9100m,
+                            CarId = 9,
+                            PricingId = 3
+                        },
+                        new
+                        {
+                            CarPricingId = 36,
+                            Amount = 32000m,
+                            CarId = 9,
+                            PricingId = 4
+                        },
+                        new
+                        {
+                            CarPricingId = 37,
+                            Amount = 190m,
+                            CarId = 10,
+                            PricingId = 1
+                        },
+                        new
+                        {
+                            CarPricingId = 38,
                             Amount = 1350m,
                             CarId = 10,
                             PricingId = 2
                         },
                         new
                         {
-                            CarPricingId = 11,
+                            CarPricingId = 39,
+                            Amount = 9450m,
+                            CarId = 10,
+                            PricingId = 3
+                        },
+                        new
+                        {
+                            CarPricingId = 40,
+                            Amount = 33500m,
+                            CarId = 10,
+                            PricingId = 4
+                        },
+                        new
+                        {
+                            CarPricingId = 41,
+                            Amount = 200m,
+                            CarId = 11,
+                            PricingId = 1
+                        },
+                        new
+                        {
+                            CarPricingId = 42,
                             Amount = 1400m,
                             CarId = 11,
                             PricingId = 2
                         },
                         new
                         {
-                            CarPricingId = 12,
+                            CarPricingId = 43,
+                            Amount = 9800m,
+                            CarId = 11,
+                            PricingId = 3
+                        },
+                        new
+                        {
+                            CarPricingId = 44,
+                            Amount = 35000m,
+                            CarId = 11,
+                            PricingId = 4
+                        },
+                        new
+                        {
+                            CarPricingId = 45,
+                            Amount = 210m,
+                            CarId = 12,
+                            PricingId = 1
+                        },
+                        new
+                        {
+                            CarPricingId = 46,
                             Amount = 1450m,
                             CarId = 12,
                             PricingId = 2
+                        },
+                        new
+                        {
+                            CarPricingId = 47,
+                            Amount = 10150m,
+                            CarId = 12,
+                            PricingId = 3
+                        },
+                        new
+                        {
+                            CarPricingId = 48,
+                            Amount = 36500m,
+                            CarId = 12,
+                            PricingId = 4
                         });
                 });
 
@@ -1193,16 +1445,8 @@ namespace CarBook.Persistence.Migrations
                             FooterAddressId = 1,
                             Address = "123 Ana Cadde, Şehir, Ülke",
                             Description = "Merkezi Ofis",
-                            Email = "info@carbook.com",
+                            Email = "info@AracKiralama.com",
                             Phone = "+90 123 456 7890"
-                        },
-                        new
-                        {
-                            FooterAddressId = 2,
-                            Address = "456 Yan Cadde, Şehir, Ülke",
-                            Description = "Şube 1",
-                            Email = "sube1@carbook.com",
-                            Phone = "+90 123 456 7891"
                         });
                 });
 
@@ -1372,6 +1616,36 @@ namespace CarBook.Persistence.Migrations
                     b.HasKey("SocialMediaId");
 
                     b.ToTable("SocialMedias");
+
+                    b.HasData(
+                        new
+                        {
+                            SocialMediaId = 1,
+                            Icon = "fab fa-facebook",
+                            Name = "Facebook",
+                            Url = "https://www.facebook.com"
+                        },
+                        new
+                        {
+                            SocialMediaId = 2,
+                            Icon = "fab fa-twitter",
+                            Name = "Twitter",
+                            Url = "https://www.twitter.com"
+                        },
+                        new
+                        {
+                            SocialMediaId = 3,
+                            Icon = "fab fa-instagram",
+                            Name = "Instagram",
+                            Url = "https://www.instagram.com"
+                        },
+                        new
+                        {
+                            SocialMediaId = 4,
+                            Icon = "fab fa-linkedin",
+                            Name = "LinkedIn",
+                            Url = "https://www.linkedin.com"
+                        });
                 });
 
             modelBuilder.Entity("CarBook.Domain.Entities.TagCloud", b =>

@@ -15,15 +15,7 @@ namespace CarBook.Persistence.Configuration
                     Description = "Merkezi Ofis",
                     Address = "123 Ana Cadde, Şehir, Ülke",
                     Phone = "+90 123 456 7890",
-                    Email = "info@carbook.com"
-                },
-                new FooterAddress
-                {
-                    FooterAddressId = 2,
-                    Description = "Şube 1",
-                    Address = "456 Yan Cadde, Şehir, Ülke",
-                    Phone = "+90 123 456 7891",
-                    Email = "sube1@carbook.com"
+                    Email = "info@AracKiralama.com"
                 }
             );
         }

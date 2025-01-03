@@ -17,8 +17,7 @@ namespace CarBook.Persistence.Migrations
                 columns: new[] { "FooterAddressId", "Address", "Description", "Email", "Phone" },
                 values: new object[,]
                 {
-                    { 1, "123 Ana Cadde, Şehir, Ülke", "Merkezi Ofis", "info@carbook.com", "+90 123 456 7890" },
-                    { 2, "456 Yan Cadde, Şehir, Ülke", "Şube 1", "sube1@carbook.com", "+90 123 456 7891" }
+                    { 1, "123 Ana Cadde, Şehir, Ülke", "Merkezi Ofis", "info@carbook.com", "+90 123 456 7890" }
                 });
         }
 

@@ -32,6 +32,7 @@ public static class RepositoryExtensions
         services.AddScoped<ICommentRepository, CommentRepository>();
         services.AddScoped<IAuthorRepository, AuthorRepository>();
         services.AddScoped<IStatisticRepository, StatisticRepository>();
+        services.AddScoped<IRentACarRepository, RentACarRepository>();
 
         return services;
     }

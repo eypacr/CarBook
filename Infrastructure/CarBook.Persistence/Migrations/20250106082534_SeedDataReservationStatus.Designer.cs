@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarBook.Persistence.Migrations
 {
     [DbContext(typeof(CarBookContext))]
-    [Migration("20250105102751_SeedDataRentACar")]
-    partial class SeedDataRentACar
+    [Migration("20250106082534_SeedDataReservationStatus")]
+    partial class SeedDataReservationStatus
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -1332,6 +1332,31 @@ namespace CarBook.Persistence.Migrations
                     b.ToTable("Contacts");
                 });
 
+            modelBuilder.Entity("CarBook.Domain.Entities.Customer", b =>
+                {
+                    b.Property<int>("CustomerId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CustomerId"));
+
+                    b.Property<string>("CustomerMail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CustomerName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CustomerSurname")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CustomerId");
+
+                    b.ToTable("Customers");
+                });
+
             modelBuilder.Entity("CarBook.Domain.Entities.Feature", b =>
                 {
                     b.Property<int>("FeatureId")
@@ -1650,6 +1675,199 @@ namespace CarBook.Persistence.Migrations
                         });
                 });
 
+            modelBuilder.Entity("CarBook.Domain.Entities.RentACarProcess", b =>
+                {
+                    b.Property<int>("RentACarProcessId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RentACarProcessId"));
+
+                    b.Property<int>("CarId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DropOffDate")
+                        .HasColumnType("Date");
+
+                    b.Property<string>("DropOffDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DropOffLocation")
+                        .HasColumnType("int");
+
+                    b.Property<TimeSpan>("DropOffTime")
+                        .HasColumnType("time");
+
+                    b.Property<DateTime>("PickUpDate")
+                        .HasColumnType("Date");
+
+                    b.Property<string>("PickUpDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PickUpLocation")
+                        .HasColumnType("int");
+
+                    b.Property<TimeSpan>("PickUpTime")
+                        .HasColumnType("time");
+
+                    b.Property<decimal>("TotalPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("RentACarProcessId");
+
+                    b.HasIndex("CarId");
+
+                    b.HasIndex("CustomerId");
+
+                    b.ToTable("RentACarProcesses");
+                });
+
+            modelBuilder.Entity("CarBook.Domain.Entities.Reservation", b =>
+                {
+                    b.Property<int>("ReservationId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ReservationId"));
+
+                    b.Property<int>("Age")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CarId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DriverLicenseYear")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DropOffLocationId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("PickUpLocationId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ReservationStatusId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Surname")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ReservationId");
+
+                    b.HasIndex("CarId");
+
+                    b.HasIndex("DropOffLocationId");
+
+                    b.HasIndex("PickUpLocationId");
+
+                    b.HasIndex("ReservationStatusId");
+
+                    b.ToTable("Reservations");
+                });
+
+            modelBuilder.Entity("CarBook.Domain.Entities.ReservationStatus", b =>
+                {
+                    b.Property<int>("ReservationStatusId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ReservationStatusId"));
+
+                    b.Property<string>("Icon")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ReservationStatusId");
+
+                    b.ToTable("ReservationStatuses");
+
+                    b.HasData(
+                        new
+                        {
+                            ReservationStatusId = 1,
+                            Icon = "fa-clock",
+                            Name = "Beklemede"
+                        },
+                        new
+                        {
+                            ReservationStatusId = 2,
+                            Icon = "fa-check-circle",
+                            Name = "Onaylandı"
+                        },
+                        new
+                        {
+                            ReservationStatusId = 3,
+                            Icon = "fa-times-circle",
+                            Name = "İptal Edildi"
+                        },
+                        new
+                        {
+                            ReservationStatusId = 4,
+                            Icon = "fa-check-square",
+                            Name = "Tamamlandı"
+                        },
+                        new
+                        {
+                            ReservationStatusId = 5,
+                            Icon = "fa-car",
+                            Name = "Teslimat Sürecinde"
+                        },
+                        new
+                        {
+                            ReservationStatusId = 6,
+                            Icon = "fa-ban",
+                            Name = "Reddedildi"
+                        },
+                        new
+                        {
+                            ReservationStatusId = 7,
+                            Icon = "fa-money-bill",
+                            Name = "Ödeme Bekleniyor"
+                        },
+                        new
+                        {
+                            ReservationStatusId = 8,
+                            Icon = "fa-map-marker-alt",
+                            Name = "Teslimat Bekleniyor"
+                        },
+                        new
+                        {
+                            ReservationStatusId = 9,
+                            Icon = "fa-user-slash",
+                            Name = "Gelmedi"
+                        },
+                        new
+                        {
+                            ReservationStatusId = 10,
+                            Icon = "fa-undo",
+                            Name = "Ücret İade Edildi"
+                        });
+                });
+
             modelBuilder.Entity("CarBook.Domain.Entities.Service", b =>
                 {
                     b.Property<int>("ServiceId")
@@ -1954,6 +2172,56 @@ namespace CarBook.Persistence.Migrations
                     b.Navigation("Location");
                 });
 
+            modelBuilder.Entity("CarBook.Domain.Entities.RentACarProcess", b =>
+                {
+                    b.HasOne("CarBook.Domain.Entities.Car", "Car")
+                        .WithMany()
+                        .HasForeignKey("CarId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CarBook.Domain.Entities.Customer", "Customer")
+                        .WithMany("RentACarProcesses")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Car");
+
+                    b.Navigation("Customer");
+                });
+
+            modelBuilder.Entity("CarBook.Domain.Entities.Reservation", b =>
+                {
+                    b.HasOne("CarBook.Domain.Entities.Car", "Car")
+                        .WithMany("Reservations")
+                        .HasForeignKey("CarId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CarBook.Domain.Entities.Location", "DropOffLocation")
+                        .WithMany("DropOffReservation")
+                        .HasForeignKey("DropOffLocationId");
+
+                    b.HasOne("CarBook.Domain.Entities.Location", "PickUpLocation")
+                        .WithMany("PickUpReservation")
+                        .HasForeignKey("PickUpLocationId");
+
+                    b.HasOne("CarBook.Domain.Entities.ReservationStatus", "ReservationStatus")
+                        .WithMany("Reservations")
+                        .HasForeignKey("ReservationStatusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Car");
+
+                    b.Navigation("DropOffLocation");
+
+                    b.Navigation("PickUpLocation");
+
+                    b.Navigation("ReservationStatus");
+                });
+
             modelBuilder.Entity("CarBook.Domain.Entities.TagCloud", b =>
                 {
                     b.HasOne("CarBook.Domain.Entities.Blog", "Blog")
@@ -1991,11 +2259,18 @@ namespace CarBook.Persistence.Migrations
                     b.Navigation("CarPricings");
 
                     b.Navigation("RentACars");
+
+                    b.Navigation("Reservations");
                 });
 
             modelBuilder.Entity("CarBook.Domain.Entities.Category", b =>
                 {
                     b.Navigation("Blogs");
+                });
+
+            modelBuilder.Entity("CarBook.Domain.Entities.Customer", b =>
+                {
+                    b.Navigation("RentACarProcesses");
                 });
 
             modelBuilder.Entity("CarBook.Domain.Entities.Feature", b =>
@@ -2005,12 +2280,21 @@ namespace CarBook.Persistence.Migrations
 
             modelBuilder.Entity("CarBook.Domain.Entities.Location", b =>
                 {
+                    b.Navigation("DropOffReservation");
+
+                    b.Navigation("PickUpReservation");
+
                     b.Navigation("RentACars");
                 });
 
             modelBuilder.Entity("CarBook.Domain.Entities.Pricing", b =>
                 {
                     b.Navigation("CarPricings");
+                });
+
+            modelBuilder.Entity("CarBook.Domain.Entities.ReservationStatus", b =>
+                {
+                    b.Navigation("Reservations");
                 });
 #pragma warning restore 612, 618
         }

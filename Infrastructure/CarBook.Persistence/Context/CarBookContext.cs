@@ -28,7 +28,9 @@ public class CarBookContext(DbContextOptions options) : DbContext(options)
     public DbSet<Comment> Comments { get; set; }
     public DbSet<RentACar> RentACars { get; set; }
     public DbSet<RentACarProcess> RentACarProcesses { get; set; }
-    public DbSet<Customer> Customers{ get; set; }
+    public DbSet<Customer> Customers { get; set; }
+    public DbSet<Reservation> Reservations { get; set; }
+    public DbSet<ReservationStatus> ReservationStatuses { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

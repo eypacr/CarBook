@@ -1,0 +1,42 @@
+﻿using CarBook.Application.Features.Mediator.Queries.ReservationQueries;
+using CarBook.Application.Features.Mediator.Results.ReservationResults;
+using CarBook.Application.RepositoryInterfaces;
+using MediatR;
+
+namespace CarBook.Application.Features.Mediator.Handlers.ReservationHandlers;
+
+public class GetReservationQueryHandler : IRequestHandler<GetReservationQuery, List<GetReservationQueryResult>>
+{
+    public IReservationRepository _repository;
+
+    public GetReservationQueryHandler(IReservationRepository repository)
+    {
+        _repository = repository;
+    }
+
+    public async Task<List<GetReservationQueryResult>> Handle(GetReservationQuery request, CancellationToken cancellationToken)
+    {
+        var values = _repository.GetReservationListWithAllInfo();
+        return values.Select(x => new GetReservationQueryResult
+        {
+            ReservationId = x.ReservationId,
+            Age = x.Age,
+            CarId = x.CarId,
+            Description = x.Description,
+            DriverLicenseYear = x.DriverLicenseYear,
+            DropOffLocationId = x.DropOffLocationId,
+            Email = x.Email,
+            Name = x.Name,
+            Phone = x.Phone,
+            PickUpLocationId = x.PickUpLocationId,
+            Surname = x.Surname,
+            BrandName = x.Car.Brand.Name,
+            ModelName = x.Car.Model,
+            PicUpLocationName = x.PickUpLocation.Name,
+            DropOffLocationName = x.DropOffLocation.Name,
+            ReservationStatusId = x.ReservationStatusId,
+            ReservationStatusName = x.ReservationStatus.Name,
+            ReservationStatusIcon = x.ReservationStatus.Icon,
+        }).ToList();
+    }
+}

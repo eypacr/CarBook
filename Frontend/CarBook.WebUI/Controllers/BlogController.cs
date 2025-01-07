@@ -37,4 +37,5 @@ public class BlogController : Controller
         ViewBag.id = id;
         return View();
     }
+
 }

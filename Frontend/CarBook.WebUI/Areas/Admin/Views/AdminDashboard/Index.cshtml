@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-flex align-items-center justify-content-between">
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="/AdminDashboard/Index">Anasayfa</a></li>
+                    <li class="breadcrumb-item active">Gösterge Paneli</li>
+                </ol>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@await Component.InvokeAsync("_DashboardStatisticComponentPartial")
+
+<div class="row">
+    @await Component.InvokeAsync("_DashboardChart1ComponentPartial")
+    @await Component.InvokeAsync("_DashboardChart2ComponentPartial")
+    @await Component.InvokeAsync("_DashboardChart3ComponentPartial")
+</div>
+<div class="row">
+    @await Component.InvokeAsync("_DashboardCarPricingListComponentPartial")
+    @await Component.InvokeAsync("_DashboardBlogListComponentPartial")
+</div>

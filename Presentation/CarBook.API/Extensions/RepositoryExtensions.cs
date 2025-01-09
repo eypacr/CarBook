@@ -34,6 +34,7 @@ public static class RepositoryExtensions
         services.AddScoped<IStatisticRepository, StatisticRepository>();
         services.AddScoped<IRentACarRepository, RentACarRepository>();
         services.AddScoped<IReservationRepository, ReservationRepository>();
+        services.AddScoped<ICarFeatureRepository, CarFeatureRepository>();
 
         return services;
     }

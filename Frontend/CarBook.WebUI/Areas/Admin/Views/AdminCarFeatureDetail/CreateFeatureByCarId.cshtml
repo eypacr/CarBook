@@ -1,0 +1,27 @@
+﻿@model List<ResultFeatureDto>
+@{
+    ViewData["Title"] = "Özellik Seçimi";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int carId = (int)ViewBag.CarId;
+    var features = ViewBag.Features as List<ResultFeatureDto>;
+}
+
+<div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 80vh; padding: 20px;">
+    <h2>Özellik Seçimi</h2>
+    <form asp-action="CreateFeatureByCarId" asp-route-id="@carId" method="post"
+          style="width: 100%; background-color: #f9f9f9; border: 1px solid #ccc; border-radius: 10px; padding: 20px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); margin-top: 20px;">
+        <div>
+            <h4>Mevcut Özellikler:</h4>
+            @foreach (var feature in features)
+            {
+                <div style="margin-bottom: 10px;">
+                    <input type="checkbox" name="selectedFeatures" value="@feature.FeatureId" />
+                    <label>@feature.Name</label>
+                </div>
+            }
+        </div>
+        <button type="submit" style="padding: 10px 20px; background-color: #007bff; color: #fff; border: none; border-radius: 5px; cursor: pointer; margin-top: 10px;">
+            Kaydet
+        </button>
+    </form>
+</div>

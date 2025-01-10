@@ -38,6 +38,7 @@
                         </div>
 
                         <div class="tab-pane fade" id="pills-review" role="tabpanel" aria-labelledby="pills-review-tab">
+                            @await Component.InvokeAsync("_CarDetailReviewComponentPartial", new { id = ViewBag.id })
                         </div>
                     </div>
                 </div>

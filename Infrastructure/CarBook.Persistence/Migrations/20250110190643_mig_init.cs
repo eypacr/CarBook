@@ -471,6 +471,32 @@ namespace CarBook.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Reviews",
+                columns: table => new
+                {
+                    ReviewId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Surname = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Text = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsApproved = table.Column<bool>(type: "bit", nullable: false),
+                    CarId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Reviews", x => x.ReviewId);
+                    table.ForeignKey(
+                        name: "FK_Reviews_Cars_CarId",
+                        column: x => x.CarId,
+                        principalTable: "Cars",
+                        principalColumn: "CarId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Comments",
                 columns: table => new
                 {
@@ -608,6 +634,23 @@ namespace CarBook.Persistence.Migrations
                     { 2, "Günlük" },
                     { 3, "Haftalık" },
                     { 4, "Aylık" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "ReservationStatuses",
+                columns: new[] { "ReservationStatusId", "Icon", "Name" },
+                values: new object[,]
+                {
+                    { 1, "fa-clock", "Beklemede" },
+                    { 2, "fa-check-circle", "Onaylandı" },
+                    { 3, "fa-times-circle", "İptal Edildi" },
+                    { 4, "fa-check-square", "Tamamlandı" },
+                    { 5, "fa-car", "Teslimat Sürecinde" },
+                    { 6, "fa-ban", "Reddedildi" },
+                    { 7, "fa-money-bill", "Ödeme Bekleniyor" },
+                    { 8, "fa-map-marker-alt", "Teslimat Bekleniyor" },
+                    { 9, "fa-user-slash", "Gelmedi" },
+                    { 10, "fa-undo", "Ücret İade Edildi" }
                 });
 
             migrationBuilder.InsertData(
@@ -810,6 +853,29 @@ namespace CarBook.Persistence.Migrations
                     { 12, true, 12, 6 }
                 });
 
+            migrationBuilder.InsertData(
+                table: "Reviews",
+                columns: new[] { "ReviewId", "CarId", "CreatedDate", "Email", "ImageUrl", "IsApproved", "Name", "Surname", "Text" },
+                values: new object[,]
+                {
+                    { 1, 1, new DateTime(2025, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "ali.kaya@example.com", "https://i.pravatar.cc/150?img=1", true, "Ali", "Kaya", "Mükemmel bir araç, çok memnun kaldım." },
+                    { 2, 2, new DateTime(2025, 1, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), "ayse.demir@example.com", "https://i.pravatar.cc/150?img=2", false, "Ayşe", "Demir", "Arazi şartlarında mükemmel performans." },
+                    { 3, 3, new DateTime(2025, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "mehmet.celik@example.com", "https://i.pravatar.cc/150?img=3", true, "Mehmet", "Çelik", "Fiyatına göre çok iyi." },
+                    { 4, 4, new DateTime(2025, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified), "fatma.koc@example.com", "https://i.pravatar.cc/150?img=4", true, "Fatma", "Koç", "Daha iyi bir alternatif bulmak zor." },
+                    { 5, 5, new DateTime(2025, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), "cem.aydin@example.com", "https://i.pravatar.cc/150?img=5", true, "Cem", "Aydın", "Yakıt tüketimi biraz fazla ama genel olarak iyi." },
+                    { 6, 6, new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "zeynep.sahin@example.com", "https://i.pravatar.cc/150?img=6", true, "Zeynep", "Şahin", "Harika bir sürüş deneyimi sağlıyor." },
+                    { 7, 7, new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified), "hakan.yilmaz@example.com", "https://i.pravatar.cc/150?img=7", true, "Hakan", "Yılmaz", "Geniş aileler için ideal bir araç." },
+                    { 8, 8, new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), "elif.demirci@example.com", "https://i.pravatar.cc/150?img=8", true, "Elif", "Demirci", "Elektrikli olduğu için çok çevre dostu." },
+                    { 9, 9, new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), "burak.tuna@example.com", "https://i.pravatar.cc/150?img=9", true, "Burak", "Tuna", "Konfor ve lüks bir arada." },
+                    { 10, 10, new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "sevgi.dursun@example.com", "https://i.pravatar.cc/150?img=10", true, "Sevgi", "Dursun", "Çok dayanıklı bir araç, her koşulda kullanılabilir." },
+                    { 11, 11, new DateTime(2024, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "ahmet.kilic@example.com", "https://i.pravatar.cc/150?img=11", true, "Ahmet", "Kılıç", "Mükemmel tasarım ve performans." },
+                    { 12, 12, new DateTime(2024, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "selin.altin@example.com", "https://i.pravatar.cc/150?img=12", true, "Selin", "Altın", "Göz alıcı bir tasarımı var." },
+                    { 13, 12, new DateTime(2024, 12, 29, 0, 0, 0, 0, DateTimeKind.Unspecified), "emre.cetin@example.com", "https://i.pravatar.cc/150?img=13", true, "Emre", "Çetin", "Yakıt tasarrufu harika." },
+                    { 14, 11, new DateTime(2024, 12, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), "gizem.topal@example.com", "https://i.pravatar.cc/150?img=14", true, "Gizem", "Topal", "Konfor ve teknoloji bir arada." },
+                    { 15, 10, new DateTime(2024, 12, 27, 0, 0, 0, 0, DateTimeKind.Unspecified), "baris.kurt@example.com", "https://i.pravatar.cc/150?img=15", true, "Barış", "Kurt", "Arazi performansı kusursuz." },
+                    { 16, 9, new DateTime(2024, 12, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), "derya.aksoy@example.com", "https://i.pravatar.cc/150?img=16", true, "Derya", "Aksoy", "Tam bir aile aracı." }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Blogs_AuthorID",
                 table: "Blogs",
@@ -896,6 +962,11 @@ namespace CarBook.Persistence.Migrations
                 column: "ReservationStatusId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Reviews_CarId",
+                table: "Reviews",
+                column: "CarId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_TagClouds_BlogId",
                 table: "TagClouds",
                 column: "BlogId");
@@ -938,6 +1009,9 @@ namespace CarBook.Persistence.Migrations
                 name: "Reservations");
 
             migrationBuilder.DropTable(
+                name: "Reviews");
+
+            migrationBuilder.DropTable(
                 name: "Services");
 
             migrationBuilder.DropTable(
@@ -959,13 +1033,13 @@ namespace CarBook.Persistence.Migrations
                 name: "Customers");
 
             migrationBuilder.DropTable(
-                name: "Cars");
-
-            migrationBuilder.DropTable(
                 name: "Locations");
 
             migrationBuilder.DropTable(
                 name: "ReservationStatuses");
+
+            migrationBuilder.DropTable(
+                name: "Cars");
 
             migrationBuilder.DropTable(
                 name: "Blogs");

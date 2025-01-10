@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarBook.Persistence.Migrations
 {
     [DbContext(typeof(CarBookContext))]
-    [Migration("20250106081054_mig_init")]
+    [Migration("20250110190643_mig_init")]
     partial class mig_init
     {
         /// <inheritdoc />
@@ -1804,6 +1804,306 @@ namespace CarBook.Persistence.Migrations
                     b.HasKey("ReservationStatusId");
 
                     b.ToTable("ReservationStatuses");
+
+                    b.HasData(
+                        new
+                        {
+                            ReservationStatusId = 1,
+                            Icon = "fa-clock",
+                            Name = "Beklemede"
+                        },
+                        new
+                        {
+                            ReservationStatusId = 2,
+                            Icon = "fa-check-circle",
+                            Name = "Onaylandı"
+                        },
+                        new
+                        {
+                            ReservationStatusId = 3,
+                            Icon = "fa-times-circle",
+                            Name = "İptal Edildi"
+                        },
+                        new
+                        {
+                            ReservationStatusId = 4,
+                            Icon = "fa-check-square",
+                            Name = "Tamamlandı"
+                        },
+                        new
+                        {
+                            ReservationStatusId = 5,
+                            Icon = "fa-car",
+                            Name = "Teslimat Sürecinde"
+                        },
+                        new
+                        {
+                            ReservationStatusId = 6,
+                            Icon = "fa-ban",
+                            Name = "Reddedildi"
+                        },
+                        new
+                        {
+                            ReservationStatusId = 7,
+                            Icon = "fa-money-bill",
+                            Name = "Ödeme Bekleniyor"
+                        },
+                        new
+                        {
+                            ReservationStatusId = 8,
+                            Icon = "fa-map-marker-alt",
+                            Name = "Teslimat Bekleniyor"
+                        },
+                        new
+                        {
+                            ReservationStatusId = 9,
+                            Icon = "fa-user-slash",
+                            Name = "Gelmedi"
+                        },
+                        new
+                        {
+                            ReservationStatusId = 10,
+                            Icon = "fa-undo",
+                            Name = "Ücret İade Edildi"
+                        });
+                });
+
+            modelBuilder.Entity("CarBook.Domain.Entities.Review", b =>
+                {
+                    b.Property<int>("ReviewId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ReviewId"));
+
+                    b.Property<int>("CarId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsApproved")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Surname")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ReviewId");
+
+                    b.HasIndex("CarId");
+
+                    b.ToTable("Reviews");
+
+                    b.HasData(
+                        new
+                        {
+                            ReviewId = 1,
+                            CarId = 1,
+                            CreatedDate = new DateTime(2025, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "ali.kaya@example.com",
+                            ImageUrl = "https://i.pravatar.cc/150?img=1",
+                            IsApproved = true,
+                            Name = "Ali",
+                            Surname = "Kaya",
+                            Text = "Mükemmel bir araç, çok memnun kaldım."
+                        },
+                        new
+                        {
+                            ReviewId = 2,
+                            CarId = 2,
+                            CreatedDate = new DateTime(2025, 1, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "ayse.demir@example.com",
+                            ImageUrl = "https://i.pravatar.cc/150?img=2",
+                            IsApproved = false,
+                            Name = "Ayşe",
+                            Surname = "Demir",
+                            Text = "Arazi şartlarında mükemmel performans."
+                        },
+                        new
+                        {
+                            ReviewId = 3,
+                            CarId = 3,
+                            CreatedDate = new DateTime(2025, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "mehmet.celik@example.com",
+                            ImageUrl = "https://i.pravatar.cc/150?img=3",
+                            IsApproved = true,
+                            Name = "Mehmet",
+                            Surname = "Çelik",
+                            Text = "Fiyatına göre çok iyi."
+                        },
+                        new
+                        {
+                            ReviewId = 4,
+                            CarId = 4,
+                            CreatedDate = new DateTime(2025, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "fatma.koc@example.com",
+                            ImageUrl = "https://i.pravatar.cc/150?img=4",
+                            IsApproved = true,
+                            Name = "Fatma",
+                            Surname = "Koç",
+                            Text = "Daha iyi bir alternatif bulmak zor."
+                        },
+                        new
+                        {
+                            ReviewId = 5,
+                            CarId = 5,
+                            CreatedDate = new DateTime(2025, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "cem.aydin@example.com",
+                            ImageUrl = "https://i.pravatar.cc/150?img=5",
+                            IsApproved = true,
+                            Name = "Cem",
+                            Surname = "Aydın",
+                            Text = "Yakıt tüketimi biraz fazla ama genel olarak iyi."
+                        },
+                        new
+                        {
+                            ReviewId = 6,
+                            CarId = 6,
+                            CreatedDate = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "zeynep.sahin@example.com",
+                            ImageUrl = "https://i.pravatar.cc/150?img=6",
+                            IsApproved = true,
+                            Name = "Zeynep",
+                            Surname = "Şahin",
+                            Text = "Harika bir sürüş deneyimi sağlıyor."
+                        },
+                        new
+                        {
+                            ReviewId = 7,
+                            CarId = 7,
+                            CreatedDate = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "hakan.yilmaz@example.com",
+                            ImageUrl = "https://i.pravatar.cc/150?img=7",
+                            IsApproved = true,
+                            Name = "Hakan",
+                            Surname = "Yılmaz",
+                            Text = "Geniş aileler için ideal bir araç."
+                        },
+                        new
+                        {
+                            ReviewId = 8,
+                            CarId = 8,
+                            CreatedDate = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "elif.demirci@example.com",
+                            ImageUrl = "https://i.pravatar.cc/150?img=8",
+                            IsApproved = true,
+                            Name = "Elif",
+                            Surname = "Demirci",
+                            Text = "Elektrikli olduğu için çok çevre dostu."
+                        },
+                        new
+                        {
+                            ReviewId = 9,
+                            CarId = 9,
+                            CreatedDate = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "burak.tuna@example.com",
+                            ImageUrl = "https://i.pravatar.cc/150?img=9",
+                            IsApproved = true,
+                            Name = "Burak",
+                            Surname = "Tuna",
+                            Text = "Konfor ve lüks bir arada."
+                        },
+                        new
+                        {
+                            ReviewId = 10,
+                            CarId = 10,
+                            CreatedDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "sevgi.dursun@example.com",
+                            ImageUrl = "https://i.pravatar.cc/150?img=10",
+                            IsApproved = true,
+                            Name = "Sevgi",
+                            Surname = "Dursun",
+                            Text = "Çok dayanıklı bir araç, her koşulda kullanılabilir."
+                        },
+                        new
+                        {
+                            ReviewId = 11,
+                            CarId = 11,
+                            CreatedDate = new DateTime(2024, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "ahmet.kilic@example.com",
+                            ImageUrl = "https://i.pravatar.cc/150?img=11",
+                            IsApproved = true,
+                            Name = "Ahmet",
+                            Surname = "Kılıç",
+                            Text = "Mükemmel tasarım ve performans."
+                        },
+                        new
+                        {
+                            ReviewId = 12,
+                            CarId = 12,
+                            CreatedDate = new DateTime(2024, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "selin.altin@example.com",
+                            ImageUrl = "https://i.pravatar.cc/150?img=12",
+                            IsApproved = true,
+                            Name = "Selin",
+                            Surname = "Altın",
+                            Text = "Göz alıcı bir tasarımı var."
+                        },
+                        new
+                        {
+                            ReviewId = 13,
+                            CarId = 12,
+                            CreatedDate = new DateTime(2024, 12, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "emre.cetin@example.com",
+                            ImageUrl = "https://i.pravatar.cc/150?img=13",
+                            IsApproved = true,
+                            Name = "Emre",
+                            Surname = "Çetin",
+                            Text = "Yakıt tasarrufu harika."
+                        },
+                        new
+                        {
+                            ReviewId = 14,
+                            CarId = 11,
+                            CreatedDate = new DateTime(2024, 12, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "gizem.topal@example.com",
+                            ImageUrl = "https://i.pravatar.cc/150?img=14",
+                            IsApproved = true,
+                            Name = "Gizem",
+                            Surname = "Topal",
+                            Text = "Konfor ve teknoloji bir arada."
+                        },
+                        new
+                        {
+                            ReviewId = 15,
+                            CarId = 10,
+                            CreatedDate = new DateTime(2024, 12, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "baris.kurt@example.com",
+                            ImageUrl = "https://i.pravatar.cc/150?img=15",
+                            IsApproved = true,
+                            Name = "Barış",
+                            Surname = "Kurt",
+                            Text = "Arazi performansı kusursuz."
+                        },
+                        new
+                        {
+                            ReviewId = 16,
+                            CarId = 9,
+                            CreatedDate = new DateTime(2024, 12, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "derya.aksoy@example.com",
+                            ImageUrl = "https://i.pravatar.cc/150?img=16",
+                            IsApproved = true,
+                            Name = "Derya",
+                            Surname = "Aksoy",
+                            Text = "Tam bir aile aracı."
+                        });
                 });
 
             modelBuilder.Entity("CarBook.Domain.Entities.Service", b =>
@@ -2113,7 +2413,7 @@ namespace CarBook.Persistence.Migrations
             modelBuilder.Entity("CarBook.Domain.Entities.RentACarProcess", b =>
                 {
                     b.HasOne("CarBook.Domain.Entities.Car", "Car")
-                        .WithMany()
+                        .WithMany("RentACarProcesses")
                         .HasForeignKey("CarId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -2160,6 +2460,17 @@ namespace CarBook.Persistence.Migrations
                     b.Navigation("ReservationStatus");
                 });
 
+            modelBuilder.Entity("CarBook.Domain.Entities.Review", b =>
+                {
+                    b.HasOne("CarBook.Domain.Entities.Car", "Car")
+                        .WithMany("Reviews")
+                        .HasForeignKey("CarId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Car");
+                });
+
             modelBuilder.Entity("CarBook.Domain.Entities.TagCloud", b =>
                 {
                     b.HasOne("CarBook.Domain.Entities.Blog", "Blog")
@@ -2196,9 +2507,13 @@ namespace CarBook.Persistence.Migrations
 
                     b.Navigation("CarPricings");
 
+                    b.Navigation("RentACarProcesses");
+
                     b.Navigation("RentACars");
 
                     b.Navigation("Reservations");
+
+                    b.Navigation("Reviews");
                 });
 
             modelBuilder.Entity("CarBook.Domain.Entities.Category", b =>

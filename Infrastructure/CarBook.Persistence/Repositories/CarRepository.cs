@@ -14,6 +14,20 @@ namespace CarBook.Persistence.Repositories
             _context = context;
         }
 
+        public Car GetCarById(int id)
+        {
+            var values = _context.Cars
+                .Include(c => c.Brand)
+                .Include(c => c.RentACarProcesses) 
+                .Include(c => c.CarDescriptions)
+                .Include(c => c.RentACars)
+                .FirstOrDefault(c => c.CarId == id);
+
+            return values;
+        }
+
+
+
         public List<Car> GetCarsByBrand(int id)
         {
             var values = _context.Cars

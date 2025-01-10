@@ -28,8 +28,8 @@ public class CarController : Controller
     }
     public async Task<IActionResult> CarDetail(int id)
     {
-        ViewBag.v1 = "Araba Detayı";
-        ViewBag.v2 = "Araba Detayı";
+        ViewBag.v1 = "Araba Detayları";
+        ViewBag.v2 = "Aracın Teknik Aksesuar Ve Özellikleri";
         ViewBag.id = id;
         return View();
     }

@@ -1,22 +1,22 @@
 ﻿using CarBook.Application.Features.CQRS.Queries.CarQueries;
 using CarBook.Application.Features.CQRS.Results.CarResults;
 using CarBook.Application.RepositoryInterfaces;
-using CarBook.Domain.Entities;
 
 namespace CarBook.Application.Features.CQRS.Handlers.CarHandlers;
 
 public class GetCarByIdQueryHandler
 {
-    private readonly IRepository<Car> _repository;
+    private readonly ICarRepository _repository;
 
-    public GetCarByIdQueryHandler(IRepository<Car> repository)
+    public GetCarByIdQueryHandler(ICarRepository repository)
     {
         _repository = repository;
     }
 
     public async Task<GetCarByIdQueryResult> Handle(GetCarByIdQuery query)
     {
-        var values =await _repository.GetByIdAsync(query.Id);
+        var values = _repository.GetCarById(query.Id);
+
         return new GetCarByIdQueryResult
         {
             BrandId = values.BrandId,
@@ -28,7 +28,9 @@ public class GetCarByIdQueryHandler
             Luggage = values.Luggage,
             Model = values.Model,
             Seat = values.Seat,
-            Transmission = values.Transmission
+            Transmission = values.Transmission,
+            // CarDescriptions listesindeki Details alanlarını birleştiriyoruz.
+            Description = string.Join(",", values.CarDescriptions.Select(cd => cd.Details))
         };
     }
 }

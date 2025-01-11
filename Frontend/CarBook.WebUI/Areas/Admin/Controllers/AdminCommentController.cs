@@ -9,11 +9,11 @@ namespace CarBook.WebUI.Areas.Admin.Controllers;
 
 [Area("Admin")]
 [Route("Admin/[controller]")]
-public class CommentController : Controller
+public class AdminCommentController : Controller
 {
     private readonly IHttpClientFactory _httpClientFactory;
 
-    public CommentController(IHttpClientFactory httpClientFactory)
+    public AdminCommentController(IHttpClientFactory httpClientFactory)
     {
         _httpClientFactory = httpClientFactory;
     }

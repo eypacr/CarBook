@@ -1,4 +1,4 @@
-﻿using System.Text.Json.Serialization;
+﻿using CarBookProject.WebApi.Hubs;
 
 namespace CarBook.API.Extensions;
 
@@ -12,9 +12,9 @@ public static class ConfigurePipelineExtensions
         {
             app.UseSwaggerExt();
         }
-
+        app.UseCors("CorsPolicy"); //Cors Konfigürasyonu
         app.UseHttpsRedirection();
-
+        app.MapHub<CarHub>("/carhub"); //SignalR tarafına istek yapmayı sağlayan yapı.
         return app;
     }
 }

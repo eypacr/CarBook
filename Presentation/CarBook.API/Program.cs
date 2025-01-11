@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 //JWT Bearer Konfigürasyonu
-builder.Services.AddJwtAuthentication();
+builder.Services.AddJwtAuthentication().AddCorsPolicy();
 
 // Servislerin doðru sýrayla eklenmesi
 builder.Services.AddRepositories(builder.Configuration)

@@ -71,6 +71,8 @@ Lokasyona dayalı araç kiralama işlemleri için geliştirilen modern bir web A
 - İlk olarak, projeyi GitHub'dan klonlayın:
 ```
 git clone https://github.com/eypacr/CarBook.git
+```
+```
 cd CarBook
 ```
 

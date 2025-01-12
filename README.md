@@ -66,14 +66,9 @@ Lokasyona dayalı araç kiralama işlemleri için geliştirilen modern bir web A
 2. [Microsoft SQL Server](https://www.microsoft.com/sql-server)
 
 ### Adımlar:
-1. Bu projeyi klonlayın:
-   ```bash
-   git clone https://github.com/eypacr/CarBook.git
+### 1. Projeyi Klonlayın
+İlk olarak, projeyi GitHub'dan klonlayın:
 
-   cd CarBook
-   
-2.Gerekli bağımlılıkları yükleyin
-  ```bash
-dotnet restore
-
-
+```bash
+git clone https://github.com/eypacr/CarBook.git
+cd CarBook

@@ -64,6 +64,38 @@ Lokasyona dayalı araç kiralama işlemleri için geliştirilen modern bir web A
 ### Gerekli Kurulumlar:
 1. [.NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 2. [Microsoft SQL Server](https://www.microsoft.com/sql-server)
+3. 
+## CarBookDb.bak Dosyasının Kullanımı
+
+Bu projede yer alan **CarBookDb.bak** dosyası, **CarBook veritabanı** için alınan bir yedekleme dosyasıdır. Bu dosya, proje geliştirme sürecinde oluşan veritabanı değişikliklerinin yedeğini almak amacıyla kullanılır.
+
+### CarBookDb.bak Dosyasını İndirme
+
+1. **GitHub üzerinden İndirme**:
+    - **CarBookDb.bak** dosyasına [buradan ulaşabilirsiniz](https://github.com/eypacr/CarBook/blob/master/Doc/CarBookDb.bak).
+    - Dosyayı GitHub sayfasında sağ tıklayarak "Save As" (Farklı Kaydet) seçeneği ile bilgisayarınıza indirebilirsiniz.
+
+2. **Doğrudan İndirme**:
+    - [CarBookDb.bak](https://github.com/eypacr/CarBook/blob/master/Doc/CarBookDb.bak) dosyasını yukarıdaki bağlantıya tıklayarak indirmeniz mümkündür.⬇️
+
+### CarBookDb.bak Dosyasının Kullanımı
+
+**CarBookDb.bak** dosyası, veritabanı yedeği olarak kullanılır ve aşağıdaki adımları takip ederek kullanabilirsiniz:
+
+1. **SQL Server'a Yedeği Geri Yükleme**:
+   - SQL Server Management Studio (SSMS) veya başka bir SQL aracı kullanarak yedeği geri yükleyebilirsiniz.🖥️
+   - Veritabanını geri yüklemek için şu adımları izleyin:
+     1. SSMS'yi açın ve SQL Server'a bağlanın.
+     2. **Veritabanları** sekmesinde sağ tıklayıp **Yedekle** veya **Restore** seçeneğini tıklayın. 🔄
+     3. **CarBookDb.bak** dosyasını seçin ve geri yükleme işlemini başlatın.⬇️
+
+2. **Veritabanı Oluşturma**:
+   - Eğer yedek dosyası kullanılacaksa, yedeği yükledikten sonra veritabanınızda **CarBookDb** adıyla bir veritabanı oluşturulmuş olacaktır.
+
+### Uyarılar⚠️
+
+- Yedekleme dosyasının kullanımı, sadece veritabanındaki mevcut verilerin yedeğini almak içindir. Bu dosyayı kullanmadan önce, mevcut verilerinizi yedeklemeyi unutmayın.💾
+- Yedeği geri yükledikten sonra, veritabanınızda olabilecek eski veriler veya yapı değişiklikleri konusunda dikkatli olun.
 
 ### Adımlar:
 

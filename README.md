@@ -64,7 +64,8 @@ Lokasyona dayalı araç kiralama işlemleri için geliştirilen modern bir web A
 ### Gerekli Kurulumlar:
 1. [.NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 2. [Microsoft SQL Server](https://www.microsoft.com/sql-server)
-3. 
+3. [Visual Studio veya Visual Studio Code](https://visualstudio.microsoft.com/)  
+
 ## CarBookDb.bak Dosyasının Kullanımı
 
 Bu projede yer alan **CarBookDb.bak** dosyası, **CarBook veritabanı** için alınan bir yedekleme dosyasıdır. Bu dosya, proje geliştirme sürecinde oluşan veritabanı değişikliklerinin yedeğini almak amacıyla kullanılır.
